@@ -1,0 +1,16 @@
+.estacionamento {
+   display: flex;
+   flex-direction: row;
+}
+
+.vagas {
+    display: flex;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    width: 10rem;
+    height: 10rem;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
