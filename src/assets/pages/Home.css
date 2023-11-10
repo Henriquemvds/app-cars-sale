@@ -3,7 +3,7 @@
    flex-direction: row;
 }
 
-.vagas {
+.estacionamento .vagas {
     display: flex;
     color: #FFFFFF;
     background-color: #0000FF;
