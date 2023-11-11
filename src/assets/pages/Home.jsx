@@ -21,19 +21,17 @@ useEffect(() => {
     return (
 
         <section className='estacionamento'>   
-            <ul>
+            
             {vagas.map((vaga) => (
                 <>
                          <Link to={`/detalhes-vaga/${vaga.id_vaga}`}> 
                               <div className="vagas">
-                                 
                         {vaga.id_vaga}
-                   
                     </div>
                        </Link>
                 </>
 ))}
-    </ul>            
+             
           </section>
         
     )
