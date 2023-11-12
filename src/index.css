@@ -1,0 +1,46 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+  } 
+
+  body {
+    background-image: linear-gradient( to top, #808080, #000 );
+  }
+
+.content {
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    background-color: #fff;
+    height: auto;
+    width: 100vw;
+}
+
+
+@media screen and (max-width: 380px) {
+    .content{
+        max-width: 380px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+       }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .content{
+        max-width: 576px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+       }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .content{
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+       }
+   }
+  
