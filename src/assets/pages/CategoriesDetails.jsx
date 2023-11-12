@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 
-function VacancyDetails() {
+function CategoriesDetails() {
 
     let { id_video } = useParams()
     return (
@@ -50,4 +50,4 @@ function VacancyDetails() {
     )
 }
 
-export default VacancyDetails;
+export default CategoriesDetails;

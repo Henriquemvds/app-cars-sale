@@ -5,28 +5,27 @@ import '../pages/Home.css'
 
 function Home() {
 
-const [vagas, setVagas] = useState([])
+const [categories, setCategories] = useState([])
 
 
-const getVacancies = () => {
-    axios.get('http://localhost:3000/vagas')
-    .then((response) => setVagas(response.data))
+const getCategories = () => {
+    axios.get('http://localhost:3000/categorias')
+    .then((response) => setCategories(response.data))
 }
 
-console.log(vagas)
-
 useEffect(() => {
-    getVacancies()
+    getCategories()
 }, [])
+
     return (
 
         <section className='estacionamento'>   
             
-            {vagas.map((vaga) => (
+            {categories.map((categorie) => (
                 <>
-                         <Link to={`/detalhes-vaga/${vaga.id_vaga}`}> 
+                         <Link to={`/categorias/${categorie.id_categoria}`}> 
                               <div className="vagas">
-                        {vaga.id_vaga}
+                        {categorie.id_categoria}
                     </div>
                        </Link>
                 </>
