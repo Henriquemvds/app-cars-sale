@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './assets/pages/Home'
-import VacancyDetails from './assets/pages/VacancyDetails'
+import CategoriesDetails from './assets/pages/CategoriesDetails'
 
 const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/detalhes-vaga/:id_vaga',
-    element: <VacancyDetails />
+    path: '/categorias/:id_vaga',
+    element: <CategoriesDetails />
   },
 ])
 
