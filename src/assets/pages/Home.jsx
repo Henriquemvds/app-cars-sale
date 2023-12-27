@@ -6,9 +6,9 @@ import '../pages/Home.css'
 function Home() {
 
     return (
-<section>
-             
-</section>
+<main className="content">
+         <header>Cars sale</header>    
+</main>
         
     )
 }
