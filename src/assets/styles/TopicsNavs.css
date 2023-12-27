@@ -1,0 +1,43 @@
+.topics {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0rem 1rem .9rem;
+    width: auto;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color:  #d3d3d3;
+}
+
+.listTopics {
+    display: flex;
+    gap: 3rem;
+}
+
+.listTopics span {
+    opacity: 0.5;
+}
+
+.listTopics span:hover {
+    border-right: solid;
+    border-left: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    opacity: 1;
+    transition: 500ms linear; 
+    padding: 0rem 1rem 0rem 1rem;
+    cursor: pointer;
+}
+
+.linkSell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.car {
+    margin-left: 1rem;
+    width: 20px;
+    height: 20px;
+}
