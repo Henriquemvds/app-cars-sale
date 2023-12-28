@@ -1,9 +1,3 @@
-.info {
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #d3d3d3;
-}
-
 .folder {
     display: flex;
     background-image: url('../images/carWallpaper.jpg');

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
-import '../styles/Home.css'
-import TopicsNavs from "../components/TopicsNavs";
-import InfoHeader from "../components/InfoHeader";
+import '../styles/_Home.css'
+import TopicsNavs from "../components/TopicsNavs"
+import InfoHeader from "../components/InfoHeader"
 import VehicleList from "../components/VehicleList"
+import Footer from "../components/Footer"
 
 function Home() {
 
@@ -15,15 +16,18 @@ function Home() {
           Cars sale
         </h2>
       </header>
-      <nav>
+      <nav className='topics'>
         <TopicsNavs />
       </nav>
-      <header>
+      <header className='info'>
         <InfoHeader />
       </header>
-      <section>
+      <section className="items">
         <VehicleList />
       </section>
+      <footer className='about'>
+        <Footer />
+      </footer>
     </main>
 
   )

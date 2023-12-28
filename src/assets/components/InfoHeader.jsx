@@ -3,7 +3,7 @@ import '../styles/InfoHeader.css'
 function InfoHeader() {
 
     return (
-        <div className='info'>
+        <div>
             <div className='folder'>
                 <h2>
                     Principais Escolhas!
