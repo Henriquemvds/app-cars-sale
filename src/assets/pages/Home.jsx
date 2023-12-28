@@ -4,6 +4,7 @@ import axios from 'axios'
 import '../styles/Home.css'
 import TopicsNavs from "../components/TopicsNavs";
 import InfoHeader from "../components/InfoHeader";
+import VehicleList from "../components/VehicleList"
 
 function Home() {
 
@@ -20,6 +21,9 @@ function Home() {
       <header>
         <InfoHeader />
       </header>
+      <section>
+        <VehicleList />
+      </section>
     </main>
 
   )

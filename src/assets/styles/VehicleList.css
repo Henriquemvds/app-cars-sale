@@ -1,0 +1,65 @@
+
+
+.items {
+    margin: 1rem;
+}
+.dropdownInteraction {
+    display: flex;
+    gap: 1rem;
+}
+
+.dropdown {
+    border-width: 1px;
+    box-shadow: 5px 2px 1px #d3d3d3;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    cursor: pointer;
+}
+
+.vehicleList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2rem;
+    gap: 3rem;
+    width: auto;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item:hover {
+    padding: 0.2rem;
+    border: solid;
+    transition: 500ms linear; 
+    border-width: 1px;
+    border-color: #d3d3d3;
+    cursor: pointer;
+}
+
+
+.details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details span {
+    font-size: 0.8rem;
+}
+
+.infoBatch {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    opacity: 0.5;
+}
+
+.carExample {
+    width: 200px;
+    height: 200px;
+}
