@@ -5,7 +5,7 @@ import '../styles/VehicleList.css'
 function VehicleList() {
 
     return (
-        <div className='items'>
+        <div>
         <article className='dropdownInteraction'>
                 <select className='dropdown'>
                     <option>Marca</option>

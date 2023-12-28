@@ -1,0 +1,31 @@
+.header {
+    margin: 2rem;
+}
+
+.items {
+    padding: 1rem;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
+
+.info {
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
+
+.topics {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0rem 1rem .9rem;
+    border-top: solid;
+    border-width: 1px;
+    border-color:  #d3d3d3;
+}
+
+.about {
+    display: flex;
+    margin: 2rem;
+}
+

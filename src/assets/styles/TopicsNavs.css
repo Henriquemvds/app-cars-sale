@@ -1,17 +1,7 @@
-.topics {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0rem 1rem .9rem;
-    width: auto;
-    border-top: solid;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color:  #d3d3d3;
-}
-
 .listTopics {
     display: flex;
-    gap: 3rem;
+    flex-direction: row;
+    gap: 5rem;
 }
 
 .listTopics span {
@@ -30,14 +20,12 @@
 }
 
 .linkSell {
-    display: flex;
-    flex-direction: row;
+    display: flex;  
     align-items: center;
     gap: 1rem;
 }
 
 .car {
-    margin-right: 1rem;
     width: 15px;
     height: 15px;
 }
