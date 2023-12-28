@@ -33,11 +33,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 2rem;
+    gap: 1rem;
 }
 
 .car {
-    margin-left: 1rem;
-    width: 20px;
-    height: 20px;
+    margin-right: 1rem;
+    width: 15px;
+    height: 15px;
 }

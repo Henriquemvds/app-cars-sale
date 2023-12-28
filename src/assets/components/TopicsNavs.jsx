@@ -5,7 +5,7 @@ function TopicsNavs() {
 
     return (
         <div className='topics'>
-            <div className='listTopics'>
+            <article className='listTopics'>
                 <span>
                     Carros Novos
                 </span>
@@ -24,7 +24,7 @@ function TopicsNavs() {
                 <span>
                     Motocicletas
                 </span>
-            </div>
+            </article>
 
             <div className='linkSell'>
                 <button>
