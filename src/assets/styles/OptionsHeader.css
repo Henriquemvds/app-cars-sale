@@ -1,0 +1,15 @@
+.interactionOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.interactionOptions h4 {
+    display: flex;
+    width: 100px;
+}
+
+.linksPages {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
