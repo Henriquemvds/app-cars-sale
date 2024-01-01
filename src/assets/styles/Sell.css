@@ -6,3 +6,12 @@
     border-width: 1px;
     border-color: #d3d3d3;
 }
+
+.formSell {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
