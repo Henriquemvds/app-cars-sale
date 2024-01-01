@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './assets/pages/Home'
+import Buy from './assets/pages/Buy'
 import Sell from './assets/pages/Sell'
 
 const router = createBrowserRouter([
