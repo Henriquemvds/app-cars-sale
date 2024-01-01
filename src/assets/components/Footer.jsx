@@ -1,4 +1,4 @@
-import '../styles/Footer.css'
+import '../styles/components/Footer.css'
 import iconInstagram from '../icons/instagram.svg'
 
 function Footer() {

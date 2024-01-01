@@ -1,6 +1,6 @@
 import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
-import '../styles/VehicleList.css'
+import '../styles/components/VehicleList.css'
 
 function VehicleList() {
 

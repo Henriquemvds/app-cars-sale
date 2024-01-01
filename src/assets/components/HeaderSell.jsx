@@ -1,4 +1,4 @@
-import '../styles/HeaderSell.css'
+import '../styles/components/HeaderSell.css'
 import iconCar from '../icons/car.svg'
 
 function HeaderSell() {

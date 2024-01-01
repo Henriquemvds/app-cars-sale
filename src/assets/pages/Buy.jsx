@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
-import '../styles/Buy.css'
+import '../styles/pages/Buy.css'
 import HeaderBuy from "../components/HeaderBuy"
 import BuyItem from "../components/BuyItem"
 import DetailsItem from "../components/DetailsItem"
