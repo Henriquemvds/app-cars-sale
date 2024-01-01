@@ -1,8 +1,8 @@
-import '../styles/BuyItems.css'
+import '../styles/BuyItem.css'
 import carExample from '../images/carWallpaper.jpg'
 import iconCorrect from '../icons/correct.svg'
 
-function BuyItems() {
+function BuyItem() {
 
     return (
         <div className='detailsSelect'>
@@ -34,4 +34,4 @@ function BuyItems() {
     )
 }
 
-export default BuyItems;
+export default BuyItem;
