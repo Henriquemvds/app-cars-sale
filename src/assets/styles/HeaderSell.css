@@ -1,0 +1,12 @@
+.alignHeaderSell {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    justify-content: space-between;
+}
+
+.interactHeaderSell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

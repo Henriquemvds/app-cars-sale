@@ -1,0 +1,8 @@
+.headerSell {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
