@@ -1,4 +1,4 @@
-import '../styles/OptionsHeader.css'
+import '../styles/HeaderBuy.css'
 
 function OptionsNavs() {
 

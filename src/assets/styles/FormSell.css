@@ -1,0 +1,42 @@
+.alertInfo h4 {
+    margin: 0;
+}
+
+.alertInfo span {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.alignInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+}
+
+.alignRadio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inputInfo {
+    display: flex;
+    padding: 0.5rem;
+    width: 300px;
+    box-shadow: 5px 2px 1px #d3d3d3;
+}
+
+.dropdownInfo {
+    display: flex;
+    padding: 0.5rem;
+    width: 320px;
+    box-shadow: 5px 2px 1px #d3d3d3;
+}
+
+.submit {
+    display: flex;
+    justify-content: right;
+    margin: 3rem;
+}

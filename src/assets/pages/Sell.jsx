@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import '../styles/Sell.css'
 import HeaderSell from "../components/HeaderSell"
+import FormSell from "../components/FormSell"
 import Footer from "../components/Footer"
 
 function Sell() {
@@ -12,6 +13,9 @@ function Sell() {
             <header className="headerSell">
                 <HeaderSell />
             </header>
+            <form className="formSell">
+                <FormSell />
+            </form>
             <footer className='about'>
                 <Footer />
             </footer>
