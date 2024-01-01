@@ -1,5 +1,5 @@
 import iconCar from '../icons/car.svg'
-import '../styles/TopicsNavs.css'
+import '../styles/components/TopicsNavs.css'
 
 function TopicsNavs() {
 

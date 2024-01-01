@@ -4,9 +4,6 @@
 
 .items {
     padding: 1rem;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #d3d3d3;
 }
 
 .info {
@@ -25,7 +22,10 @@
 }
 
 .about {
+    border-top: solid;
+    border-width: 1px;
+    border-color:  #d3d3d3;
     display: flex;
-    margin: 2rem;
+    padding: 2rem;
 }
 

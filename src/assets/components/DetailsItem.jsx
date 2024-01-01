@@ -1,4 +1,4 @@
-import '../styles/DetailsItem.css'
+import '../styles/components/DetailsItem.css'
 
 
 function DetailsItem() {

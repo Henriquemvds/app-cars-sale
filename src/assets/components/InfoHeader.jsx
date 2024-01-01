@@ -1,4 +1,4 @@
-import '../styles/InfoHeader.css'
+import '../styles/components/InfoHeader.css'
 
 function InfoHeader() {
 

@@ -1,4 +1,4 @@
-import '../styles/BuyItem.css'
+import '../styles/components/BuyItem.css'
 import carExample from '../images/carWallpaper.jpg'
 import iconCorrect from '../icons/correct.svg'
 

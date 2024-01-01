@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
-import '../styles/_Home.css'
+import '../styles/pages/_Home.css'
 import TopicsNavs from "../components/TopicsNavs"
 import InfoHeader from "../components/InfoHeader"
 import VehicleList from "../components/VehicleList"

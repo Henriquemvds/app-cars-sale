@@ -1,6 +1,6 @@
 .folder {
     display: flex;
-    background-image: url('../images/carWallpaper.jpg');
+    background-image: url('../../images/carWallpaper.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -18,10 +18,6 @@
     margin: 2rem;
     word-wrap: break-word;
     font-size: .825rem;
-}
-
-.tips span {
-    width: 7rem;
 }
 
 .batch {
