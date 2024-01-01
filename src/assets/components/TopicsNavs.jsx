@@ -1,4 +1,4 @@
-import car from '../icons/car.svg'
+import iconCar from '../icons/car.svg'
 import '../styles/TopicsNavs.css'
 
 function TopicsNavs() {
@@ -29,7 +29,7 @@ function TopicsNavs() {
                 <button>
                     Vender
                 </button>
-                <img src={car} className='car' />
+                <img src={iconCar} className='iconCar' />
             </div>
         </article>
 

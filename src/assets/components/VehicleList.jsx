@@ -1,4 +1,4 @@
-import car from '../icons/car.svg'
+import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
 import '../styles/VehicleList.css'
 
@@ -6,7 +6,7 @@ function VehicleList() {
 
     return (
         <div>
-        <article className='dropdownInteraction'>
+            <article className='dropdownInteraction'>
                 <select className='dropdown'>
                     <option>Marca</option>
                 </select>
@@ -21,7 +21,6 @@ function VehicleList() {
                 </select>
             </article>
 
-    
             <figure className='vehicleList'>
                 <div className='item'>
                     <img src={carExample} className='carExample' />
@@ -29,90 +28,7 @@ function VehicleList() {
                         <span>nome do carro</span>
                         <div className='infoBatch'>
                             <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={car} className='car'></img>
+                            <img src={iconCar} className='iconCar'></img>
                         </div>
                     </div>
                     <span>
@@ -121,7 +37,7 @@ function VehicleList() {
                 </div>
             </figure>
         </div>
- 
+
     )
 }
 

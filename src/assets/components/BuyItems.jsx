@@ -1,10 +1,11 @@
 import '../styles/BuyItems.css'
 import carExample from '../images/carWallpaper.jpg'
+import iconCorrect from '../icons/correct.svg'
 
 function BuyItems() {
 
     return (
-        <div>
+        <div className='detailsSelect'>
             <figure className='itemSelect'>
                 <img src={carExample} className='carExample' />
                 <div className='vehiclePresentation'>
@@ -23,6 +24,11 @@ function BuyItems() {
                 </div>
                 <span>Detalhes da compra</span>
             </figure>
+
+            <div className='buyConfirmed'>
+                <img src={iconCorrect} className='iconCorrect'/>
+                <span><b>É sempre um prazer fazer negócios com você!</b></span>
+            </div>
 
         </div>
     )

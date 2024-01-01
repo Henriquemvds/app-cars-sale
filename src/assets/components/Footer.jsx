@@ -1,5 +1,5 @@
 import '../styles/Footer.css'
-import instagram from '../icons/instagram.svg'
+import iconInstagram from '../icons/instagram.svg'
 
 function Footer() {
 
@@ -33,7 +33,7 @@ function Footer() {
 
             <div className='contact'>
                 <span><b>Me siga</b></span>
-                <img src={instagram} className='instagram'/>
+                <img src={iconInstagram} className='iconInstagram'/>
             </div>
 
         </div>
