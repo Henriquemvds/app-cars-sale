@@ -61,3 +61,44 @@
     width: 30px;
     height: 30px;
 }
+
+@media screen and (max-width: 992px) {
+    .infoAbout {
+        max-width: 992px;
+        gap: 3rem;
+    }
+}
+@media screen and (max-width: 813px) {
+    .infoAbout {
+        max-width: 813px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    .presentation {
+        border-right: none;
+        border-bottom: solid;
+        border-width: 1px;
+        border-color:  #d3d3d3;
+        width: 500px;
+    }
+    .buyAndSell {
+        flex-direction: row;
+    }
+    .contact {
+      width: 813px;
+    }
+
+}
+
+@media screen and (max-width: 580px) {
+    .infoAbout {
+        max-width: 580px;
+    }
+    .presentation {
+        width: 300px;
+    }
+    .contact {
+        width: 580px;
+      }
+}
