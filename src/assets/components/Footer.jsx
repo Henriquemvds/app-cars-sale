@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import '../styles/components/Footer.css'
 import iconInstagram from '../icons/instagram.svg'
+import iconGitHub from '../icons/gitHub.svg'
 
 function Footer() {
 
@@ -15,11 +17,15 @@ function Footer() {
             <div className='buyAndSell'>
                 <div className='buy'>
                     <span><b>Comprar</b></span>
-                    <span>Selecione seu veículo</span>
+                    <Link  style={{ textDecoration: 'none', color: '#000'}} to={`/`}>
+                        <span>Selecione seu veículo</span>
+                    </Link>
                 </div>
                 <div className='sell'>
                     <span><b>Vender</b></span>
-                    <span>Venda seu veículo</span>
+                    <Link  style={{ textDecoration: 'none', color: '#000' }} to={`/sell`}>
+                        <span>Venda seu veículo</span>
+                    </Link>
                 </div>
             </div>
 
@@ -33,7 +39,14 @@ function Footer() {
 
             <div className='contact'>
                 <span><b>Me siga</b></span>
-                <img src={iconInstagram} className='iconInstagram'/>
+                <div className='iconsContact'>
+                    <a href="https://www.instagram.com/henrique.mv/">
+                        <img src={iconInstagram} className='iconContact' />
+                    </a>
+                    <a href="https://github.com/DevHenriquecido">
+                        <img src={iconGitHub} className='iconContact' />
+                    </a>
+                </div>
             </div>
 
         </div>

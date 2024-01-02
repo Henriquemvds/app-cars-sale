@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
 import '../styles/components/VehicleList.css'
@@ -22,32 +23,21 @@ function VehicleList() {
             </article>
 
             <figure className='vehicleList'>
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={iconCar} className='iconCar'></img>
+                <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy`}>
+                    <div className='item'>
+                        <img src={carExample} className='carExample' />
+                        <div className='details'>
+                            <span>nome do carro</span>
+                            <div className='infoBatch'>
+                                <span>2</span>
+                                <img src={iconCar} className='iconCar'></img>
+                            </div>
                         </div>
+                        <span>
+                            R$100.000,00
+                        </span>
                     </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
-                <div className='item'>
-                    <img src={carExample} className='carExample' />
-                    <div className='details'>
-                        <span>nome do carro</span>
-                        <div className='infoBatch'>
-                            <span>2</span>
-                            <img src={iconCar} className='iconCar'></img>
-                        </div>
-                    </div>
-                    <span>
-                        R$100.000,00
-                    </span>
-                </div>
+                </Link>
             </figure>
         </div>
 
