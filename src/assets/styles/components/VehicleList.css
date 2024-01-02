@@ -17,7 +17,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: 2rem;
-    gap: 3rem;
+    gap: 1rem;
     width: auto;
 }
 
@@ -61,16 +61,6 @@
 }
 
 .carExample {
-    width: 200px;
-    height: 200px;
-}
-
-@media screen and (max-width: 992px) {
-    .vehicleList {
-        max-width: 992px;
-    }
-    .carExample {
-        width: 130px;
-        height: 130px;
-    }
+    width: 130px;
+    height: 130px;
 }
