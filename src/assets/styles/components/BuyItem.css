@@ -1,7 +1,7 @@
 .detailsSelect {
     display: flex;
     flex-direction: row;
-    gap: 10rem;
+    gap: 5rem;
 }
 
 .itemSelect {
@@ -60,11 +60,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    opacity: 0;
+    padding: 2rem;
+    width: auto;
 }
 
 .buyConfirmed span{
     font-size: 25px;
+    text-align: center;
 }
 
 .iconCorrect {
@@ -81,4 +83,29 @@
 .buyConfirmed:hover {
     opacity: 1;
     transition: 500ms linear;
+}
+
+.carExampleBuy {
+    width: 200px;
+    height: 150px;
+}
+
+@media screen and (max-width: 992px) {
+    .detailsSelect {
+        gap: 2rem;
+    }
+}
+@media screen and (max-width: 992px) {
+    .detailsSelect {
+        gap: 0rem;
+    }
+}
+@media screen and (max-width: 576px) {
+    .itemSelect {
+        padding: 1rem;
+    }
+    .detailsSelect {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

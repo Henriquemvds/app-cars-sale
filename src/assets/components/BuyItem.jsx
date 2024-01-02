@@ -7,7 +7,7 @@ function BuyItem() {
     return (
         <div className='detailsSelect'>
             <figure className='itemSelect'>
-                <img src={carExample} className='carExample' />
+                <img src={carExample} className='carExampleBuy' />
                 <div className='vehiclePresentation'>
                     <h4>nome do carro</h4>
                     <span>descrição do carro</span>
@@ -24,11 +24,12 @@ function BuyItem() {
                 </div>
                 <span>Detalhes da compra</span>
             </figure>
-
+    
             <div className='buyConfirmed'>
                 <img src={iconCorrect} className='iconCorrect'/>
                 <span><b>É sempre um prazer fazer negócios com você!</b></span>
             </div>
+         
 
         </div>
     )
