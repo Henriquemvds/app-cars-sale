@@ -92,19 +92,23 @@
 
 @media screen and (max-width: 992px) {
     .detailsSelect {
+        max-width: 992px;
         gap: 2rem;
     }
 }
 @media screen and (max-width: 992px) {
     .detailsSelect {
+        max-width: 992px;
         gap: 0rem;
     }
 }
 @media screen and (max-width: 576px) {
     .itemSelect {
+        max-width: 576px;
         padding: 1rem;
     }
     .detailsSelect {
+        max-width: 576px;
         flex-direction: column;
         gap: 1rem;
     }
