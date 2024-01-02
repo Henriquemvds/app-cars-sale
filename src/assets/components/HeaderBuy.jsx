@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import '../styles/components/HeaderBuy.css'
 
 function OptionsNavs() {
@@ -7,17 +8,12 @@ function OptionsNavs() {
             <h4>
                 Detalhes do veículo
             </h4>
-            <div className='linksPages'>
-                <div className='linkSell'>
-                    <button>
-                        Comprar agora
-                    </button>
-                </div>
-                <div className='linkSell'>
+            <div className='linkSell'>
+                <Link style={{ textDecoration: 'none', color: '#000' }} to={`/`}>
                     <button>
                         Ver outros
                     </button>
-                </div>
+                </Link>
             </div>
         </div>
     )

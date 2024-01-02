@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import '../styles/components/TopicsNavs.css'
 
@@ -26,9 +27,11 @@ function TopicsNavs() {
             </span>
 
             <div className='linkSell'>
-                <button>
-                    Vender
-                </button>
+                <Link style={{ textDecoration: 'none', color: '#000' }} to={`/sell`}>
+                    <button>
+                        Vender
+                    </button>
+                </Link>
                 <img src={iconCar} className='iconCar' />
             </div>
         </article>
