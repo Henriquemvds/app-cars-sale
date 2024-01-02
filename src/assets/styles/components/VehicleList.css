@@ -64,3 +64,13 @@
     width: 200px;
     height: 200px;
 }
+
+@media screen and (max-width: 992px) {
+    .vehicleList {
+        max-width: 992px;
+    }
+    .carExample {
+        width: 130px;
+        height: 130px;
+    }
+}
