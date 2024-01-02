@@ -40,3 +40,51 @@
     justify-content: right;
     margin: 3rem;
 }
+
+@media screen and (max-width: 740px) {
+    .inputInfo {
+        max-width: 740px;
+        width: 200px;
+    }
+
+    .dropdownInfo {
+        max-width: 740px;
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .alignInput {
+        max-width: 576px;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .inputInfo {
+        max-width: 576px;
+        width: 300px;
+    }
+
+    .dropdownInfo {
+        max-width: 576px;
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .alignInput {
+        max-width: 350px;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .inputInfo {
+        max-width: 350px;
+        width: 200px;
+    }
+
+    .dropdownInfo {
+        max-width: 350px;
+        width: 220px;
+    }
+}
