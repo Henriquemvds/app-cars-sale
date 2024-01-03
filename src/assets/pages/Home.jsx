@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import axios from 'axios'
 import '../styles/pages/_Home.css'
 import TopicsNavs from "../components/TopicsNavs"
 import InfoHeader from "../components/InfoHeader"
