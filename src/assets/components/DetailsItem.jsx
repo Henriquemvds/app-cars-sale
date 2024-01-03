@@ -1,22 +1,41 @@
 import '../styles/components/DetailsItem.css'
+import { useEffect, useState } from 'react'
 
+function DetailsItem({ props }) {
 
-function DetailsItem() {
+    const [seller, setSeller] = useState([])
+
+    const getSeller = () => {
+        props.map(() => setSeller([...props]))
+    }
+
+    useEffect(() => {
+        getSeller()
+    }, [props])
+
 
     return (
         <div className='detailsItem'>
-            <div className='alignInfo'>
-                <span><b>Localização</b></span>
-                <span>123 Main Street, Anytown, USA</span>
-            </div>
-            <div className='alignInfo'>
-                <span><b>Contato E-mail</b></span>
-                <span>info@example.com</span>
-            </div>
-            <div className='alignInfo'>
-                <span><b>Contato telefone</b></span>
-                <span>+1 123 456 7890</span>
-            </div>
+            {seller.map((item) => (
+                <>
+                <div className='alignInfo'>
+                        <span><b>Nome do vendedor</b></span>
+                        <span>{item.nome_vendedor}</span>
+                    </div>
+                    <div className='alignInfo'>
+                        <span><b>Contato E-mail</b></span>
+                        <span>{item.email_vendedor}</span>
+                    </div>
+                    <div className='alignInfo'>
+                        <span><b>Contato telefone</b></span>
+                        <span>{item.telefone_vendedor}</span>
+                    </div>
+                    <div className='alignInfo'>
+                        <span><b>Localização</b></span>
+                        <span>123 Main Street, Anytown, USA</span>
+                    </div> 
+                </>
+            ))}
 
             <div className='infoTotal'>
                 <span><b>Total de venda</b></span>
