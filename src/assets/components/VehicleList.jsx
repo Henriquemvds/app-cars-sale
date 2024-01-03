@@ -2,8 +2,21 @@ import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
 import '../styles/components/VehicleList.css'
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 function VehicleList() {
+
+const [cars, setCars] = useState([])
+
+const getCars = () => {
+    axios.get('http://localhost:3000/carros')
+    .then((response) => setCars(response.data))
+}
+
+useEffect(() =>  {
+    getCars()
+}, [])
 
     return (
         <div>
@@ -23,21 +36,25 @@ function VehicleList() {
             </article>
 
             <figure className='vehicleList'>
+                {cars.map((item) => (
+                    <>
                 <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy`}>
                     <div className='item'>
                         <img src={carExample} className='carExample' />
                         <div className='details'>
-                            <span>nome do carro</span>
+                            <span>{item.nome_carro}</span>
                             <div className='infoBatch'>
-                                <span>2</span>
+                                <span>{item.quantidade_carro}</span>
                                 <img src={iconCar} className='iconCar'></img>
                             </div>
                         </div>
                         <span>
-                            R$100.000,00
+                            R${item.preco_carro}
                         </span>
                     </div>
                 </Link>
+                    </>
+                ))}
             </figure>
         </div>
 
