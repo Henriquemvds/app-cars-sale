@@ -3,20 +3,18 @@ import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
 import '../styles/components/VehicleList.css'
 import { useState, useEffect } from "react";
-import axios from 'axios'
 
-function VehicleList() {
+function VehicleList({ props }) {
 
     const [cars, setCars] = useState([])
 
     const getCars = () => {
-        axios.get('http://localhost:3000/carros')
-            .then((response) => setCars(response.data))
+        props.map(() => setCars([...props]))
     }
 
     useEffect(() => {
         getCars()
-    }, [])
+    }, [props])
 
     return (
         <div>

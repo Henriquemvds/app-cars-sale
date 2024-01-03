@@ -1,3 +1,5 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import '../styles/pages/_Home.css'
 import TopicsNavs from "../components/TopicsNavs"
 import InfoHeader from "../components/InfoHeader"
@@ -5,6 +7,17 @@ import VehicleList from "../components/VehicleList"
 import Footer from "../components/Footer"
 
 function Home() {
+
+const [cars, setCars] = useState([])
+
+  const getCars = () => {
+    axios.get('http://localhost:3000/carros')
+        .then((response) => setCars(response.data))
+}
+
+useEffect(() => {
+  getCars()
+}, [])
 
   return (
     <main className="content">
@@ -20,7 +33,7 @@ function Home() {
         <InfoHeader />
       </header>
       <section className="items">
-        <VehicleList />
+        <VehicleList props={cars}/>
       </section>
       <footer className='about'>
         <Footer />
