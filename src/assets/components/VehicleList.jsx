@@ -7,16 +7,16 @@ import axios from 'axios'
 
 function VehicleList() {
 
-const [cars, setCars] = useState([])
+    const [cars, setCars] = useState([])
 
-const getCars = () => {
-    axios.get('http://localhost:3000/carros')
-    .then((response) => setCars(response.data))
-}
+    const getCars = () => {
+        axios.get('http://localhost:3000/carros')
+            .then((response) => setCars(response.data))
+    }
 
-useEffect(() =>  {
-    getCars()
-}, [])
+    useEffect(() => {
+        getCars()
+    }, [])
 
     return (
         <div>
@@ -38,21 +38,21 @@ useEffect(() =>  {
             <figure className='vehicleList'>
                 {cars.map((item) => (
                     <>
-                <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy`}>
-                    <div className='item'>
-                        <img src={carExample} className='carExample' />
-                        <div className='details'>
-                            <span>{item.nome_carro}</span>
-                            <div className='infoBatch'>
-                                <span>{item.quantidade_carro}</span>
-                                <img src={iconCar} className='iconCar'></img>
+                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`}>
+                            <div className='item'>
+                                <img src={carExample} className='carExample' />
+                                <div className='details'>
+                                    <span>{item.nome_carro}</span>
+                                    <div className='infoBatch'>
+                                        <span>{item.quantidade_carro}</span>
+                                        <img src={iconCar} className='iconCar'></img>
+                                    </div>
+                                </div>
+                                <span>
+                                    R${item.preco_carro}
+                                </span>
                             </div>
-                        </div>
-                        <span>
-                            R${item.preco_carro}
-                        </span>
-                    </div>
-                </Link>
+                        </Link>
                     </>
                 ))}
             </figure>
