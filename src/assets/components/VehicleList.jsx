@@ -36,7 +36,7 @@ function VehicleList({ props }) {
             <figure className='vehicleList'>
                 {cars.map((item) => (
                     <>
-                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`}>
+                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`} >
                             <div className='item'>
                                 <img src={carExample} className='carExample' />
                                 <div className='details'>
