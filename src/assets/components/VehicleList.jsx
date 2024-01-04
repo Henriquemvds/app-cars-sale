@@ -13,50 +13,18 @@ function VehicleList({ props }) {
     const [model, setModel] = useState('Modelo')
     const years = []
     const brands = [
-        'Aston Martin',
-        'Audi',
-        'BMW',
-        'BYD',
-        'CAOA Chery',
-        'Chevrolet',
-        'Citroën',
-        'Effa',
-        'Ferrari',
-        'Fiat',
-        'Ford',
-        'Foton',
-        'Haval',
-        'Honda',
-        'Hyundai',
-        'Iveco',
-        'JAC',
-        'Jaguar',
-        'Jeep',
-        'Kia',
-        'Lamborghini',
-        'Land Rover',
-        'Lexus',
-        'Maserati',
-        'McLaren',
-        'Mercedes-AMG',
-        'Mercedes-Benz',
-        'Mini',
-        'Mitsubishi',
-        'Nissan',
-        'Ora',
-        'Peugeot',
-        'Porsche',
-        'RAM',
-        'Renault',
-        'Rolls-Royce',
-        'Seres',
-        'Subaru',
-        'Suzuki',
-        'Toyota',
-        'Volkswagen',
-        'Volvo'
+        'Aston Martin', 'Audi', 'BMW', 'BYD',
+        'CAOA Chery', 'Chevrolet', 'Citroën',
+        'Effa', 'Ferrari', 'Fiat', 'Ford', 'Foton',
+        'Haval', 'Honda', 'Hyundai', 'Iveco',
+        'JAC', 'Jaguar', 'Jeep', 'Kia',
+        'Lamborghini', 'Land Rover', 'Lexus', 'Maserati',
+        'McLaren', 'Mercedes-AMG', 'Mercedes-Benz', 'Mini',
+        'Mitsubishi', 'Nissan', 'Ora',
+        'Peugeot', 'Porsche', 'RAM', 'Renault',
+        'Rolls-Royce', 'Seres', 'Subaru', 'Suzuki',
+        'Toyota', 'Volkswagen', 'Volvo'
     ]
-
     const models = [
         'Hatch', 'Sedã', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
@@ -66,7 +34,7 @@ function VehicleList({ props }) {
     }
 
     var maxValue = (new Date()).getFullYear();
-    var minValue = 1900;
+    var minValue = 1950;
 
     for (let year = minValue; year <= maxValue; year++) {
         years.push(year)
@@ -110,11 +78,12 @@ function VehicleList({ props }) {
                 <select className='dropdown' onChange={e => setPrice(e.target.value)}>
                     <option>Faixa de preço</option>
                     <option value='all'>Todos</option>
-                    <option value='1'>R$10.000,00 até 50.000,00</option>
-                    <option value='2'>R$50.000,00 até 100.000,00</option>
-                    <option value='3'>R$100.000,00 até 200.000,00</option>
-                    <option value='4'>R$200.000,00 até 300.000,00</option>
-                    <option value='5'>R$400.000,00 até 500.000,00</option>
+                    <option value='1'>R$6.000,00 até 10.000,00</option>
+                    <option value='2'>R$10.000,00 até 50.000,00</option>
+                    <option value='3'>R$50.000,00 até 100.000,00</option>
+                    <option value='4'>R$100.000,00 até 200.000,00</option>
+                    <option value='5'>R$200.000,00 até 300.000,00</option>
+                    <option value='6'>R$400.000,00 até 500.000,00</option>
                 </select>
             </article>
 
