@@ -52,7 +52,49 @@ function VehicleList({ props }) {
             .then((response) => {
                 setCars(response.data)
             })
+    }
 
+    const getFilterPrice = () => {
+        let requisicao = {
+            preco_carro1: null,
+            preco_carro2: null
+        }
+        if (price == 1) {
+            requisicao = {
+                preco_carro1: 6000,
+                preco_carro2: 10000
+            }
+        } else if (price == 2) {
+            requisicao = {
+                preco_carro1: 10000,
+                preco_carro2: 50000
+            }
+        } else if (price == 3) {
+            requisicao = {
+                preco_carro1: 50000,
+                preco_carro2: 100000
+            }
+        } else if (price == 4) {
+            requisicao = {
+                preco_carro1: 100000,
+                preco_carro2: 200000
+            }
+        } else if (price == 5) {
+            requisicao = {
+                preco_carro1: 300000,
+                preco_carro2: 400000
+            }
+        } else if (price == 5) {
+            requisicao = {
+                preco_carro1: 400000,
+                preco_carro2: 500000
+            }
+        }
+        axios
+            .post("http://localhost:3000/carros/filtrar-carros-preco", requisicao)
+            .then((response) => {
+                setCars(response.data)
+            })
     }
 
     useEffect(() => {
@@ -62,6 +104,14 @@ function VehicleList({ props }) {
             getCars()
         }
     }, [brand, model, year])
+
+    useEffect(() => {
+        if (price !== 'Faixa de preço') {
+            getFilterPrice()
+        } else {
+            getCars()
+        }
+    }, [price])
 
     console.log(cars)
 
@@ -99,7 +149,6 @@ function VehicleList({ props }) {
                 </select>
                 <select className='dropdown' onChange={e => setPrice(e.target.value)}>
                     <option>Faixa de preço</option>
-                    <option value='all'>Todos</option>
                     <option value='1'>R$6.000,00 até 10.000,00</option>
                     <option value='2'>R$10.000,00 até 50.000,00</option>
                     <option value='3'>R$50.000,00 até 100.000,00</option>

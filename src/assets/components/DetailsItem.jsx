@@ -49,7 +49,7 @@ function DetailsItem({ props }) {
             <div className='infoTotal'>
                 <span><b>Total de venda</b></span>
                 <span>R$100.000,00</span>
-                <button onClick={buyCar}>Pagar</button>
+                <button onClick={() => buyCar()}>Pagar</button>
             </div>
             <div className='interactionItem'>
                 <button>Contate o vendedor</button>
