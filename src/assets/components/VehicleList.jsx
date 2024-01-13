@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import carExample from '../images/carWallpaper.jpg'
@@ -26,7 +27,7 @@ function VehicleList({ props }) {
         'Toyota', 'Volkswagen', 'Volvo'
     ]
     const models = [
-        'Hatch', 'Sedã', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
+        'Hatch', 'Sedan', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
 
     const getCars = () => {
@@ -40,6 +41,30 @@ function VehicleList({ props }) {
         years.push(year)
     }
 
+    const getFilter = () => {
+        let requisicao = {
+            marca_carro: brand,
+            modelo_carro: model,
+            ano_carro: year
+        }
+        axios
+            .post("http://localhost:3000/carros/filtrar-carros", requisicao)
+            .then((response) => {
+                setCars(response.data)
+            })
+
+    }
+
+    useEffect(() => {
+        if (brand !== 'Marca' || model !== 'Modelo' || year !== 'Ano') {
+            getFilter()
+        } else {
+            getCars()
+        }
+    }, [brand, model, year])
+
+    console.log(cars)
+
     useEffect(() => {
         getCars()
     }, [props])
@@ -49,7 +74,6 @@ function VehicleList({ props }) {
             <article className='dropdownInteraction'>
                 <select className='dropdown' onChange={e => setBrand(e.target.value)}>
                     <option>Marca</option>
-                    <option value='all'>Todos</option>
                     {brands.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -59,7 +83,6 @@ function VehicleList({ props }) {
                 </select>
                 <select className='dropdown' onChange={e => setModel(e.target.value)}>
                     <option>Modelo</option>
-                    <option value='all'>Todos</option>
                     {models.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -68,7 +91,6 @@ function VehicleList({ props }) {
                 </select>
                 <select className='dropdown' onChange={e => setYear(e.target.value)}>
                     <option value='Ano'>Ano</option>
-                    <option value='all'>Todos</option>
                     {years.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -107,6 +129,7 @@ function VehicleList({ props }) {
                         </Link>
                     </>
                 ))}
+
             </figure>
         </div>
 
