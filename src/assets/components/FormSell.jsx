@@ -1,6 +1,28 @@
+import  axios  from 'axios';
+import { useState } from 'react';
 import '../styles/components/FormSell.css'
 
 function FormsSell() {
+
+    const [sellerInfos, setSellerInfos] = useState({
+        nome_vendedor: null,
+        email_vendedor: null, 
+        telefone_vendedor: null
+    })
+
+    function registerInfo(tipoInformacao, valor) {
+
+        setSellerInfos({ ...sellerInfos, [tipoInformacao]: valor })
+
+    }
+
+    const registerSeller = () => {
+        axios.post('http://localhost:3000/vendedor/cadastrar-vendedor', sellerInfos)
+        .finally(() => alert('cadastrado'))
+    }
+
+
+console.log(sellerInfos)
 
     return (
         <div>
@@ -11,10 +33,13 @@ function FormsSell() {
             </div>
             <div className='alignInput'>
                 <div>
+
                     <h4>
                         Seu nome completo
                     </h4>
-                    <input placeholder='Insira seu nome completo' className='inputInfo'></input>
+                    <input placeholder='Insira seu nome completo' className='inputInfo'
+                      onChange={(evento) => registerInfo("nome_vendedor", evento.target.value)}
+                    ></input>
                 </div>
 
                 <div>
@@ -22,14 +47,16 @@ function FormsSell() {
                     <h4>
                         Endereço de Email
                     </h4>
-                    <input placeholder='insira.seu@email.aqui' className='inputInfo'></input>
+                    <input placeholder='insira.seu@email.aqui' className='inputInfo'
+                      onChange={(evento) => registerInfo("email_vendedor", evento.target.value)}></input>
                 </div>
 
                 <div>
                     <h4>
                         Número de telefone
                     </h4>
-                    <input placeholder='+(XX) XX XX XX XX' className='inputInfo'></input>
+                    <input placeholder='+(XX) XX XX XX XX' className='inputInfo'
+                      onChange={(evento) => registerInfo("telefone_vendedor", evento.target.value)}></input>
                 </div>
 
                 <div>
@@ -92,7 +119,7 @@ function FormsSell() {
 
 
             <div className='submit'>
-                <button>
+                <button onClick={registerSeller}>
                     Enviar
                 </button>
             </div>
