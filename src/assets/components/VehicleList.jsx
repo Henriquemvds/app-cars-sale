@@ -167,12 +167,11 @@ function VehicleList({ props }) {
                                 <div className='details'>
                                     <span>{item.nome_carro}</span>
                                     <div className='infoBatch'>
-                                        <span>{item.quantidade_carro}</span>
                                         <img src={iconCar} className='iconCar'></img>
                                     </div>
                                 </div>
                                 <span>
-                                    R${item.preco_carro}
+                                    R${item.preco_carro},00
                                 </span>
                             </div>
                         </Link>
