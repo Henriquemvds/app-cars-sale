@@ -5,6 +5,7 @@ import '../styles/components/FormSell.css'
 function FormsSell() {
 
     const [sellerInfos, setSellerInfos] = useState({
+        cpf_vendedor: null,
         nome_vendedor: null,
         email_vendedor: null, 
         telefone_vendedor: null
@@ -32,6 +33,15 @@ console.log(sellerInfos)
                 <span>Fornecer informações do veículo</span>
             </div>
             <div className='alignInput'>
+                <div>
+
+                    <h4>
+                        Seu CPF
+                    </h4>
+                    <input placeholder='Insira seu CPF' className='inputInfo'
+                      onChange={(evento) => registerInfo("cpf_vendedor", evento.target.value)}
+                    ></input>
+                </div>
                 <div>
 
                     <h4>
