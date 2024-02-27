@@ -43,7 +43,7 @@ function Footer() {
                     <a href="https://www.instagram.com/henrique.mv/">
                         <img src={iconInstagram} className='iconContact' />
                     </a>
-                    <a href="https://github.com/DevHenriquecido">
+                    <a href="https://github.com/Henriquemvds">
                         <img src={iconGitHub} className='iconContact' />
                     </a>
                 </div>
