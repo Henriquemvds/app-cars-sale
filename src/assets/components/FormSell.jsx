@@ -4,10 +4,11 @@ import '../styles/components/FormSell.css'
 
 function FormsSell() {
 
+    const [image, setImage] = useState(null)
     const [blockedInfoCars, setBlockedInfoCars] = useState(true)
     const [blockedInfoSellers, setBlockedInfoSellers] = useState(false)
 
-    
+
     const [sellerInfos, setSellerInfos] = useState({
         cpf_vendedor: null,
         nome_vendedor: null,
@@ -22,7 +23,8 @@ function FormsSell() {
         marca_carro: null,
         preco_carro: null,
         condicao_carro: null,
-        cpf_vendedor: null
+        cpf_vendedor: null,
+        imagem_carro: null
     })
 
     const brands = [
@@ -56,14 +58,19 @@ function FormsSell() {
 
         setCarInfo({ ...carInfos, [tipoInformacao]: valor })
 
+        if (tipoInformacao == 'imagem_carro') {
+            setImage(valor)
+            setCarInfo({ ...carInfos, [tipoInformacao]: valor.name })
+        }
+
     }
 
     const registerSeller = () => {
         axios.post('http://localhost:3000/vendedor/cadastrar-vendedor', sellerInfos)
-        .finally(() => {
-            alert('Seu cadastro como vendedor foi concluído, agora registre o veículo!')
-            setBlockedInfoCars(false)
-            setBlockedInfoSellers(true)
+            .finally(() => {
+                alert('Seu cadastro como vendedor foi concluído, agora registre o veículo!')
+                setBlockedInfoCars(false)
+                setBlockedInfoSellers(true)
             }
             )
     }
@@ -71,161 +78,173 @@ function FormsSell() {
     const registerCar = () => {
         axios.post('http://localhost:3000/carros/cadastrar-carro', carInfos)
             .finally(() => {
+                uploadFile()
                 alert('Seu cadastro fo veículo foi concluído!')
             }
             )
     }
 
+    const uploadFile = () => {
+        const formData = new FormData()
+        formData.append('image', image)
+        axios.post('http://localhost:3000/uploads/cadastrar-imagem', formData)
+        .finally(() => console.log('enviado!'))
+    }
 
-    console.log(sellerInfos)
-    console.log(carInfos)
+
+
     return (
         <div>
-            <h4>Registro do veículo</h4>
-            <div className='alertInfo'>
-                <h4>Detalhes do veículo</h4>
-                <span>Fornecer informações do veículo</span>
-            </div>
-            <div className='alignInput'>
-                <div>
+            <form>
 
-                    <h4>
-                        Seu CPF
-                    </h4>
-                    <input placeholder='Insira seu CPF' className='inputInfo'
-                        disabled={blockedInfoSellers}
-                        onChange={(e) => registerInfoSeller("cpf_vendedor", e.target.value)}
-                    ></input>
+                <h4>Registro do veículo</h4>
+                <div className='alertInfo'>
+                    <h4>Detalhes do veículo</h4>
+                    <span>Fornecer informações do veículo</span>
                 </div>
-                <div>
+                <div className='alignInput'>
+                    <div>
 
-                    <h4>
-                        Seu nome completo
-                    </h4>
-                    <input placeholder='Insira seu nome completo' className='inputInfo'
-                        disabled={blockedInfoSellers}
-                        onChange={(e) => registerInfoSeller("nome_vendedor", e.target.value)}
-                    ></input>
-                </div>
+                        <h4>
+                            Seu CPF
+                        </h4>
+                        <input placeholder='Insira seu CPF' className='inputInfo'
+                            disabled={blockedInfoSellers}
+                            onChange={(e) => registerInfoSeller("cpf_vendedor", e.target.value)}
+                        ></input>
+                    </div>
+                    <div>
 
-                <div>
-
-                    <h4>
-                        Endereço de Email
-                    </h4>
-                    <input placeholder='insira.seu@email.aqui' className='inputInfo'
-                        disabled={blockedInfoSellers}
-                        onChange={(e) => registerInfoSeller("email_vendedor", e.target.value)}></input>
-                </div>
-
-                <div>
-                    <h4>
-                        Número de telefone
-                    </h4>
-                    <input placeholder='+(XX) XX XX XX XX' className='inputInfo'
-                        disabled={blockedInfoSellers}
-                        onChange={(e) => registerInfoSeller("telefone_vendedor", e.target.value)}></input>
-                </div>
-
-
-            </div>
-            <div className='submit'>
-                <button type='button' onClick={registerSeller}>
-                    Enviar
-                </button>
-
-            </div>
-            <div className='alignInput'>
-                <div>
-                    <h4>
-                        Nome do veículo
-                    </h4>
-                    <input placeholder='Insira o nome do veículo aqui' className='inputInfo'
-                        disabled={blockedInfoCars}
-                        onChange={(e) => registerInfoCar("nome_carro", e.target.value)}
-                    ></input>
-                </div>
-
-                <div>
-                    <h4>
-                        Ano de fabricação
-                    </h4>
-                    <input placeholder='YYYY' className='inputInfo'
-                        disabled={blockedInfoCars}
-                        onChange={(e) => registerInfoCar("ano_carro", e.target.value)}></input>
-                </div>
-
-                <div>
-                    <h4>
-                        Tipo do veículo
-                    </h4>
-                    <select className='dropdownInfo'
-                        disabled={blockedInfoCars}
-                        onChange={(e) => registerInfoCar("modelo_carro", e.target.value)}>
-                        <option>
-                            Selecione o tipo
-                        </option>
-                        {models.map((item) => (
-                            <>
-                                <option value={item}>{item}</option>
-                            </>
-                        ))}
-                    </select>
-                </div>
-
-                <div>
-                    <h4>
-                        Marca do veículo
-                    </h4>
-                    <select className='dropdownInfo'
-                        disabled={blockedInfoCars}
-                        onChange={(e) => registerInfoCar("marca_carro", e.target.value)}>
-                        <option>
-                            Selecione a marca
-                        </option>
-                        {brands.map((item) => (
-                            <>
-                                <option value={item}>{item}</option>
-                            </>
-                        ))}
-                    </select>
-                </div>
-
-                <div>
-                    <h4>
-                        Preço
-                    </h4>
-                    <input placeholder='R$00.00' className='inputInfo'
-                        disabled={blockedInfoCars}
-                        onChange={(e) => registerInfoCar("preco_carro", e.target.value)}></input>
-                </div>
-
-                <div>
-                    <h4>
-                        Condição
-                    </h4>
-                    <div className='alignRadio'>
-                        <input name="condicao_carro" type='radio' value='Usado'
-                            disabled={blockedInfoCars}
-                            onChange={(e) => registerInfoCar("condicao_carro", e.target.value)} />
-                        <span>Usado</span>
-
-                        <input name="condicao_carro" type='radio' value='Novo'
-                            disabled={blockedInfoCars}
-                            onChange={(e) => registerInfoCar("condicao_carro", e.target.value)} />
-                        <span>Novo</span>
+                        <h4>
+                            Seu nome completo
+                        </h4>
+                        <input placeholder='Insira seu nome completo' className='inputInfo'
+                            disabled={blockedInfoSellers}
+                            onChange={(e) => registerInfoSeller("nome_vendedor", e.target.value)}
+                        ></input>
                     </div>
 
+                    <div>
+
+                        <h4>
+                            Endereço de Email
+                        </h4>
+                        <input placeholder='insira.seu@email.aqui' className='inputInfo'
+                            disabled={blockedInfoSellers}
+                            onChange={(e) => registerInfoSeller("email_vendedor", e.target.value)}></input>
+                    </div>
+
+                    <div>
+                        <h4>
+                            Número de telefone
+                        </h4>
+                        <input placeholder='+(XX) XX XX XX XX' className='inputInfo'
+                            disabled={blockedInfoSellers}
+                            onChange={(e) => registerInfoSeller("telefone_vendedor", e.target.value)}></input>
+                    </div>
+
+
                 </div>
-            </div>
+                <div className='submit'>
+                    <button type='button' onClick={registerSeller}>
+                        Enviar
+                    </button>
 
+                </div>
+                <div className='alignInput'>
+                    <div>
+                        <h4>
+                            Nome do veículo
+                        </h4>
+                        <input placeholder='Insira o nome do veículo aqui' className='inputInfo'
+                            disabled={blockedInfoCars}
+                            onChange={(e) => registerInfoCar("nome_carro", e.target.value)}
+                        ></input>
+                    </div>
 
+                    <div>
+                        <h4>
+                            Ano de fabricação
+                        </h4>
+                        <input placeholder='YYYY' className='inputInfo'
+                            disabled={blockedInfoCars}
+                            onChange={(e) => registerInfoCar("ano_carro", e.target.value)}></input>
+                    </div>
 
-            <div className='submit'>
-                <button type='button' onClick={registerCar}>
-                    Enviar
-                </button>
-            </div>
+                    <div>
+                        <h4>
+                            Tipo do veículo
+                        </h4>
+                        <select className='dropdownInfo'
+                            disabled={blockedInfoCars}
+                            onChange={(e) => registerInfoCar("modelo_carro", e.target.value)}>
+                            <option>
+                                Selecione o tipo
+                            </option>
+                            {models.map((item) => (
+                                <>
+                                    <option value={item}>{item}</option>
+                                </>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <h4>
+                            Marca do veículo
+                        </h4>
+                        <select className='dropdownInfo'
+                            disabled={blockedInfoCars}
+                            onChange={(e) => registerInfoCar("marca_carro", e.target.value)}>
+                            <option>
+                                Selecione a marca
+                            </option>
+                            {brands.map((item) => (
+                                <>
+                                    <option value={item}>{item}</option>
+                                </>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <h4>
+                            Preço
+                        </h4>
+                        <input placeholder='R$00.00' className='inputInfo'
+                            disabled={blockedInfoCars}
+                            onChange={(e) => registerInfoCar("preco_carro", e.target.value)}></input>
+                    </div>
+
+                    <div>
+                        <h4>
+                            Condição
+                        </h4>
+                        <div className='alignRadio'>
+                            <input name="condicao_carro" type='radio' value='Usado'
+                                disabled={blockedInfoCars}
+                                onChange={(e) => registerInfoCar("condicao_carro", e.target.value)} />
+                            <span>Usado</span>
+
+                            <input name="condicao_carro" type='radio' value='Novo'
+                                disabled={blockedInfoCars}
+                                onChange={(e) => registerInfoCar("condicao_carro", e.target.value)} />
+                            <span>Novo</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <label className="form-label">File</label>
+                    <input type="file" onChange={(e) => registerInfoCar("imagem_carro", e.target.files[0])} accept="application/jpg" name='image' />
+                </div>;
+
+                <div className='submit'>
+                    <button type='button' onClick={registerCar}>
+                        Enviar
+                    </button>
+                </div>
+            </form>
         </div>
     )
 }
