@@ -1,6 +1,6 @@
 .folder {
     display: flex;
-    background-image: url('../../images/carWallpaper.jpg');
+    background-image: url('../../public/images/carWallpaper.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

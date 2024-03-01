@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/components/BuyItem.css'
-import carExample from '../images/carWallpaper.jpg'
+import carExample from '../public/images/carWallpaper.jpg'
 import iconCorrect from '../icons/correct.svg'
 import { useEffect, useState } from 'react'
 
