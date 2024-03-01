@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
-import carExample from '../images/carWallpaper.jpg'
+import carExample from '../public/images/carWallpaper.jpg'
 import '../styles/components/VehicleList.css'
 import { useState, useEffect } from "react";
 

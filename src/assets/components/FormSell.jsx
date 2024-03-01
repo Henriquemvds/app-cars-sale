@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import iconCar from '../icons/car.svg'
 import '../styles/components/FormSell.css'
 
 function FormsSell() {
@@ -7,7 +8,6 @@ function FormsSell() {
     const [image, setImage] = useState(null)
     const [blockedInfoCars, setBlockedInfoCars] = useState(true)
     const [blockedInfoSellers, setBlockedInfoSellers] = useState(false)
-
 
     const [sellerInfos, setSellerInfos] = useState({
         cpf_vendedor: null,
@@ -88,7 +88,7 @@ function FormsSell() {
         const formData = new FormData()
         formData.append('image', image)
         axios.post('http://localhost:3000/uploads/cadastrar-imagem', formData)
-        .finally(() => console.log('enviado!'))
+            .finally(() => console.log('enviado!'))
     }
 
 
@@ -237,7 +237,11 @@ function FormsSell() {
                 <div>
                     <label className="form-label">File</label>
                     <input type="file" onChange={(e) => registerInfoCar("imagem_carro", e.target.files[0])} accept="application/jpg" name='image' />
-                </div>;
+                    {image ?
+                        <img src={URL.createObjectURL(image)} width='200px' height='200px' alt="Imagem" />
+                        : <img src={iconCar} width='200px' height='200px'/>
+                    }
+                </div>
 
                 <div className='submit'>
                     <button type='button' onClick={registerCar}>
