@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import iconCar from '../icons/car.svg'
+import iconImage from '../icons/image.svg'
 import '../styles/components/FormSell.css'
 
 function FormsSell() {
@@ -233,14 +233,20 @@ function FormsSell() {
                         </div>
 
                     </div>
-                </div>
-                <div>
-                    <label className="form-label">File</label>
-                    <input type="file" onChange={(e) => registerInfoCar("imagem_carro", e.target.files[0])} accept="application/jpg" name='image' />
-                    {image ?
-                        <img src={URL.createObjectURL(image)} width='200px' height='200px' alt="Imagem" />
-                        : <img src={iconCar} width='200px' height='200px'/>
-                    }
+                    <div className='fileInfo'>
+                        <label for="file" className='inputFileInfo'>Selecione o arquivo</label>
+                        <input type="file"  disabled={blockedInfoCars} onChange={(e) => registerInfoCar("imagem_carro", e.target.files[0])} accept="application/jpg" name='image' id="file" />
+                            {carInfos.imagem_carro}
+                        {image ?
+                            <label className='imageInfo' for="file" >
+                                <img src={URL.createObjectURL(image)} width='200px' height='200px' alt="Imagem" />
+                            </label>
+                            :
+                            <label className='imageInfo' for="file"  disabled={blockedInfoCars}>
+                                <img src={iconImage} width='200px' height='200px'/>
+                            </label>
+                        }
+                    </div>
                 </div>
 
                 <div className='submit'>
