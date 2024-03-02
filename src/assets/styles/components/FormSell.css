@@ -22,12 +22,36 @@
     gap: 1rem;
 }
 
-.inputInfo {
+.inputInfo, .inputFileInfo {
     display: flex;
     padding: 0.5rem;
     width: 300px;
     box-shadow: 5px 2px 1px #d3d3d3;
 }
+
+
+.fileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.imageInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 2px 1px #d3d3d3;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.inputFileInfo:hover, .imageInfo:hover {
+    cursor: pointer;
+    box-shadow: 5px 2px 1px #000;
+    background-color: #d3d3d3;
+    transition: 500ms linear; 
+}
+
 
 .dropdownInfo {
     display: flex;
