@@ -14,7 +14,7 @@ function DetailsItem({ props }) {
     }
 
     const buyCar = () => {
-        axios.delete(`http://localhost:3000/carros/excluir-carro/${id_carro}`)
+        axios.delete(`https://api-cars-sale.vercel.app/carros/excluir-carro/${id_carro}`)
         .then(() => console.log('Comprado!'))
     }
 

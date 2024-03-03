@@ -11,7 +11,7 @@ function Home() {
 const [cars, setCars] = useState([])
 
   const getCars = () => {
-    axios.get('http://localhost:3000/carros')
+    axios.get('https://api-cars-sale.vercel.app/carros')
         .then((response) => setCars(response.data))
 }
 

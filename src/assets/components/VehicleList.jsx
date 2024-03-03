@@ -48,7 +48,7 @@ function VehicleList({ props }) {
             ano_carro: year
         }
         axios
-            .post("http://localhost:3000/carros/filtrar-carros", requisicao)
+            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -91,7 +91,7 @@ function VehicleList({ props }) {
             }
         }
         axios
-            .post("http://localhost:3000/carros/filtrar-carros-preco", requisicao)
+            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -163,7 +163,7 @@ function VehicleList({ props }) {
                     <>
                         <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`} >
                             <div className='item'>
-                                <img src={carExample} className='carExample' />
+                                <img src={`https://api-cars-sale.vercel.app/files/${item.imagem_carro}`} className='carExample' />
                                 <div className='details'>
                                     <span>{item.nome_carro}</span>
                                     <div className='infoBatch'>

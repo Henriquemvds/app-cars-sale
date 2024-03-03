@@ -66,7 +66,7 @@ function FormsSell() {
     }
 
     const registerSeller = () => {
-        axios.post('http://localhost:3000/vendedor/cadastrar-vendedor', sellerInfos)
+        axios.post('https://api-cars-sale.vercel.app/vendedor/cadastrar-vendedor', sellerInfos)
             .finally(() => {
                 alert('Seu cadastro como vendedor foi concluído, agora registre o veículo!')
                 setBlockedInfoCars(false)
@@ -76,7 +76,7 @@ function FormsSell() {
     }
 
     const registerCar = () => {
-        axios.post('http://localhost:3000/carros/cadastrar-carro', carInfos)
+        axios.post('https://api-cars-sale.vercel.app/carros/cadastrar-carro', carInfos)
             .finally(() => {
                 uploadFile()
                 alert('Seu cadastro fo veículo foi concluído!')
@@ -87,7 +87,7 @@ function FormsSell() {
     const uploadFile = () => {
         const formData = new FormData()
         formData.append('image', image)
-        axios.post('http://localhost:3000/uploads/cadastrar-imagem', formData)
+        axios.post('https://api-cars-sale.vercel.app/uploads/cadastrar-imagem', formData)
             .finally(() => console.log('enviado!'))
     }
 
