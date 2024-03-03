@@ -14,14 +14,19 @@ function Buy() {
 
   let { id_carro } = useParams()
 
+  const Access = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "mode": "no-cors"
+}
 
   const getCar = () => {
-    axios.get(`http://localhost:3000/carros/${id_carro}`)
+    axios.get(`https://api-cars-sale.vercel.app/carros/${id_carro}`, Access)
       .then((response) => setCar(response.data))
   }
   const getSeller = () => {
     car.map((item) => {
-      axios.get(`http://localhost:3000/vendedor/${item.id_vendedor}`)
+      axios.get(`https://api-cars-sale.vercel.app/vendedor/${item.id_vendedor}`, Access)
         .then((response) => setSeller(response.data))
     })
   }

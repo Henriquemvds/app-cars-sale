@@ -96,7 +96,7 @@ function VehicleList({ props }) {
             }
         }
         axios
-            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", requisicao)
+            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", Access, requisicao)
             .then((response) => {
                 setCars(response.data)
             })
