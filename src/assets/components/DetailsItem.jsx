@@ -14,11 +14,10 @@ function DetailsItem({ props }) {
     }
 
     const Access = {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "mode": "no-cors"
+        "headers": {
+            "Content-Type": "application/json"
+        }
     }
-
     const buyCar = () => {
         axios.delete(`https://api-cars-sale.vercel.app/carros/excluir-carro/${id_carro}`, Access)
         .then(() => console.log('Comprado!'))
