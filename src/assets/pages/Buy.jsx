@@ -13,11 +13,10 @@ function Buy() {
   const [seller, setSeller] = useState([])
 
   let { id_carro } = useParams()
-
   const Access = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "mode": "no-cors"
+    "headers": {
+        "Content-Type": "application/json"
+    }
 }
 
   const getCar = () => {

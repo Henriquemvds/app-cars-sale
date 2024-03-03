@@ -10,9 +10,9 @@ function FormsSell() {
     const [blockedInfoSellers, setBlockedInfoSellers] = useState(false)
 
     const Access = {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "mode": "no-cors"
+        "headers": {
+            "Content-Type": "application/json"
+        }
     }
 
     const [sellerInfos, setSellerInfos] = useState({
