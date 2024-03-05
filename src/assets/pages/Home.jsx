@@ -10,14 +10,9 @@ function Home() {
 
 const [cars, setCars] = useState([])
 
-const Access = {
-  "headers": {
-      "Content-Type": "application/json"
-  }
-}
 
   const getCars = () => {
-    axios.get('https://api-cars-sale.vercel.app/carros', Access)
+    axios.get('https://api-cars-sale-blue.vercel.app/carros')
         .then((response) => setCars(response.data))
 }
 

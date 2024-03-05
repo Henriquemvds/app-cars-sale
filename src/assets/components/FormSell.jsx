@@ -9,11 +9,7 @@ function FormsSell() {
     const [blockedInfoCars, setBlockedInfoCars] = useState(true)
     const [blockedInfoSellers, setBlockedInfoSellers] = useState(false)
 
-    const Access = {
-        "headers": {
-            "Content-Type": "application/json"
-        }
-    }
+  
 
     const [sellerInfos, setSellerInfos] = useState({
         cpf_vendedor: null,
@@ -72,7 +68,7 @@ function FormsSell() {
     }
 
     const registerSeller = () => {
-        axios.post('https://api-cars-sale.vercel.app/vendedor/cadastrar-vendedor', Access, sellerInfos)
+        axios.post('https://api-cars-sale-blue.vercel.app/vendedor/cadastrar-vendedor', sellerInfos)
             .finally(() => {
                 alert('Seu cadastro como vendedor foi concluído, agora registre o veículo!')
                 setBlockedInfoCars(false)
@@ -82,7 +78,7 @@ function FormsSell() {
     }
 
     const registerCar = () => {
-        axios.post('https://api-cars-sale.vercel.app/carros/cadastrar-carro', Access, carInfos)
+        axios.post('https://api-cars-sale-blue.vercel.app/carros/cadastrar-carro', carInfos)
             .finally(() => {
                 uploadFile()
                 alert('Seu cadastro fo veículo foi concluído!')
@@ -93,7 +89,7 @@ function FormsSell() {
     const uploadFile = () => {
         const formData = new FormData()
         formData.append('image', image)
-        axios.post('https://api-cars-sale.vercel.app/uploads/cadastrar-imagem', Access, formData)
+        axios.post('https://api-cars-sale-blue.vercel.app/uploads/cadastrar-imagem', formData)
             .finally(() => console.log('enviado!'))
     }
 

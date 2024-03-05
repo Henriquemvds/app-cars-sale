@@ -13,13 +13,8 @@ function DetailsItem({ props }) {
         props.map(() => setSeller([...props]))
     }
 
-    const Access = {
-        "headers": {
-            "Content-Type": "application/json"
-        }
-    }
     const buyCar = () => {
-        axios.delete(`https://api-cars-sale.vercel.app/carros/excluir-carro/${id_carro}`, Access)
+        axios.delete(`https://api-cars-sale-blue.vercel.app/carros/excluir-carro/${id_carro}`)
         .then(() => console.log('Comprado!'))
     }
 

@@ -13,19 +13,15 @@ function Buy() {
   const [seller, setSeller] = useState([])
 
   let { id_carro } = useParams()
-  const Access = {
-    "headers": {
-        "Content-Type": "application/json"
-    }
-}
+
 
   const getCar = () => {
-    axios.get(`https://api-cars-sale.vercel.app/carros/${id_carro}`, Access)
+    axios.get(`https://api-cars-sale-blue.vercel.app/carros/${id_carro}`)
       .then((response) => setCar(response.data))
   }
   const getSeller = () => {
     car.map((item) => {
-      axios.get(`https://api-cars-sale.vercel.app/vendedor/${item.id_vendedor}`, Access)
+      axios.get(`https://api-cars-sale-blue.vercel.app/vendedor/${item.id_vendedor}`)
         .then((response) => setSeller(response.data))
     })
   }
