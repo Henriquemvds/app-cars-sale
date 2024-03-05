@@ -29,11 +29,6 @@ function VehicleList({ props }) {
     const models = [
         'Hatch', 'Sedan', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
-    const Access = {
-        "headers": {
-            "Content-Type": "application/json"
-        }
-    }
 
     const getCars = () => {
         props.map(() => setCars([...props]))
@@ -53,7 +48,7 @@ function VehicleList({ props }) {
             ano_carro: year
         }
         axios
-            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros", Access, requisicao)
+            .post("https://api-cars-sale-blue.vercel.app/carros/filtrar-carros", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -96,7 +91,7 @@ function VehicleList({ props }) {
             }
         }
         axios
-            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", Access, requisicao)
+            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
