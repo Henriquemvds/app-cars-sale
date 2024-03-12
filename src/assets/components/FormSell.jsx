@@ -89,7 +89,7 @@ function FormsSell() {
     const uploadFile = () => {
         const formData = new FormData()
         formData.append('image', image)
-        axios.post('https://api-cars-sale-blue.vercel.app/uploads/cadastrar-imagem', formData)
+        axios.post('http:/localhost:3000/uploads/cadastrar-imagem', formData)
             .finally(() => console.log('enviado!'))
     }
 
