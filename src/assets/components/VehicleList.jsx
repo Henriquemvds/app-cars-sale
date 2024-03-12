@@ -163,7 +163,7 @@ function VehicleList({ props }) {
                     <>
                         <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`} >
                             <div className='item'>
-                                <img src={`https://api-cars-sale.vercel.app/files/${item.imagem_carro}`} className='carExample' />
+                                <img src={`http:/localhost:3000/files/${item.imagem_carro}`} className='carExample' />
                                 <div className='details'>
                                     <span>{item.nome_carro}</span>
                                     <div className='infoBatch'>
