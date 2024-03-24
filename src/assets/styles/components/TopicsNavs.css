@@ -21,12 +21,6 @@
     cursor: pointer;
 }
 
-.linkSell {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
 .iconCar {
     width: 15px;
     height: 15px;

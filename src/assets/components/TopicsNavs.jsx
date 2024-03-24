@@ -25,15 +25,6 @@ function TopicsNavs() {
             <span>
                 Motocicletas
             </span>
-
-            <div className='linkSell'>
-                <Link style={{ textDecoration: 'none', color: '#000' }} to={`/sell`}>
-                    <button>
-                        Vender
-                    </button>
-                </Link>
-                <img src={iconCar} className='iconCar' />
-            </div>
         </article>
 
 
