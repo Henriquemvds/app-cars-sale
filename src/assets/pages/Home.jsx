@@ -8,16 +8,16 @@ import Footer from "../components/Footer"
 
 function Home() {
 
-const [cars, setCars] = useState([])
+const [vehicles, setVehicles] = useState([])
 
 
-  const getCars = () => {
-    axios.get('https://api-cars-sale-blue.vercel.app/carros')
-        .then((response) => setCars(response.data))
+  const getVehicles= () => {
+    axios.get('https://api-cars-sale-blue.vercel.app/automoveis')
+        .then((response) => setVehicles(response.data))
 }
 
 useEffect(() => {
-  getCars()
+  getVehicles()
 }, [])
 
   return (
@@ -34,7 +34,7 @@ useEffect(() => {
         <InfoHeader />
       </header>
       <section className="items">
-        <VehicleList props={cars}/>
+        <VehicleList props={vehicles}/>
       </section>
       <footer className='about'>
         <Footer />
