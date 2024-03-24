@@ -21,12 +21,7 @@ function Footer() {
                         <span>Selecione seu veículo</span>
                     </Link>
                 </div>
-                <div className='sell'>
-                    <span><b>Vender</b></span>
-                    <Link  style={{ textDecoration: 'none', color: '#000' }} to={`/sell`}>
-                        <span>Venda seu veículo</span>
-                    </Link>
-                </div>
+               
             </div>
 
             <div className='help'>
