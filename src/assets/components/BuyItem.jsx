@@ -7,30 +7,30 @@ import { useEffect, useState } from 'react'
 
 function BuyItem({ props }) {
 
-    const [car, setCar] = useState([])
+    const [vehicles, setVehicles] = useState([])
 
-    const getCar = () => {
-        props.map(() => setCar([...props]))
+    const getVehicles = () => {
+        props.map(() => setVehicles([...props]))
     }
 
     useEffect(() => {
-        getCar()
+        getVehicles()
     }, [props])
 
 
     return (
         <div className='detailsSelect'>
-            {car.map((item) => (
+            {vehicles.map((item) => (
                 <>
                     <figure className='itemSelect'>
                         <img src={carExample} className='carExampleBuy'/>
                         <div className='vehiclePresentation'>
-                            <h4>{item.nome_carro}</h4>
-                            <span><b>Tipo:</b> {item.modelo_carro}, <b>Marca:</b> {item.marca_carro}, <b>Ano:</b> {item.ano_carro}</span>
+                            <h4>{item.nome_automovel}</h4>
+                            <span><b>Tipo:</b> {item.modelo_automovel}, <b>Marca:</b> {item.marca_automovel}, <b>Ano:</b> {item.ano_automovel}</span>
                         </div>
                         <div className='infoPrice'>
                             <span><b>Preço</b></span>
-                            <span>R${item.preco_carro}</span>
+                            <span>R${item.preco_automovel}</span>
                         </div>
                         <div className='infoMethod'>
                             <span><b>Método de pagamento</b></span>

@@ -9,30 +9,17 @@ import Footer from "../components/Footer"
 
 function Buy() {
 
-  const [car, setCar] = useState([])
-  const [seller, setSeller] = useState([])
+  const [vehicles, setVehicles] = useState([])
 
-  let { id_carro } = useParams()
-
-
-  const getCar = () => {
-    axios.get(`https://api-cars-sale-blue.vercel.app/carros/${id_carro}`)
-      .then((response) => setCar(response.data))
+  const getVehicles = () => {
+    axios.get(`https://api-cars-sale-blue.vercel.app/automoveis/${id_automovel}`)
+      .then((response) => setVehicles(response.data))
   }
-  const getSeller = () => {
-    car.map((item) => {
-      axios.get(`https://api-cars-sale-blue.vercel.app/vendedor/${item.id_vendedor}`)
-        .then((response) => setSeller(response.data))
-    })
-  }
-
+ 
   useEffect(() => {
-    getCar()
+    getVehicles()
   }, [])
 
-  useEffect(() => {
-    getSeller()
-  }, [car])
 
   return (
     <main className="content">
@@ -41,10 +28,10 @@ function Buy() {
       </header>
       <div className="detailsPurchase">
         <section>
-          <BuyItem props={car} />
+          <BuyItem props={vehicles} />
         </section>
         <section>
-          <DetailsItem props={seller} />
+          <DetailsItem />
         </section>
       </div>
       <footer className='about'>

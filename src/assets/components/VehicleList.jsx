@@ -1,13 +1,12 @@
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import iconCar from '../icons/car.svg'
-import carExample from '../public/images/carWallpaper.jpg'
 import '../styles/components/VehicleList.css'
 import { useState, useEffect } from "react";
 
 function VehicleList({ props }) {
 
-    const [cars, setCars] = useState([])
+    const [vehicles, setVehicles] = useState([])
     const [year, setYear] = useState('Ano')
     const [price, setPrice] = useState('Faixa de preço')
     const [brand, setBrand] = useState('Marca')
@@ -30,8 +29,8 @@ function VehicleList({ props }) {
         'Hatch', 'Sedan', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
 
-    const getCars = () => {
-        props.map(() => setCars([...props]))
+    const getVehicles = () => {
+        props.map(() => setVehicles([...props]))
     }
 
     var maxValue = (new Date()).getFullYear();
@@ -43,12 +42,12 @@ function VehicleList({ props }) {
 
     const getFilter = () => {
         let requisicao = {
-            marca_carro: brand,
-            modelo_carro: model,
-            ano_carro: year
+            marca_automovel: brand,
+            modelo_automovel: model,
+            ano_automovel: year
         }
         axios
-            .post("https://api-cars-sale-blue.vercel.app/carros/filtrar-carros", requisicao)
+            .post("https://api-cars-sale-blue.vercel.app/automoveis/filtrar-automoveis", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -56,42 +55,42 @@ function VehicleList({ props }) {
 
     const getFilterPrice = () => {
         let requisicao = {
-            preco_carro1: null,
-            preco_carro2: null
+            preco_automovel1: null,
+            preco_automovel2: null
         }
         if (price == 1) {
             requisicao = {
-                preco_carro1: 6000,
-                preco_carro2: 10000
+               preco_automovel1: 6000,
+                preco_automovel2: 10000
             }
         } else if (price == 2) {
             requisicao = {
-                preco_carro1: 10000,
-                preco_carro2: 50000
+               preco_automovel1: 10000,
+                preco_automovel2: 50000
             }
         } else if (price == 3) {
             requisicao = {
-                preco_carro1: 50000,
-                preco_carro2: 100000
+               preco_automovel1: 50000,
+                preco_automovel2: 100000
             }
         } else if (price == 4) {
             requisicao = {
-                preco_carro1: 100000,
-                preco_carro2: 200000
+               preco_automovel1: 100000,
+                preco_automovel2: 200000
             }
         } else if (price == 5) {
             requisicao = {
-                preco_carro1: 300000,
-                preco_carro2: 400000
+               preco_automovel1: 300000,
+                preco_automovel2: 400000
             }
         } else if (price == 5) {
             requisicao = {
-                preco_carro1: 400000,
-                preco_carro2: 500000
+               preco_automovel1: 400000,
+                preco_automovel2: 500000
             }
         }
         axios
-            .post("https://api-cars-sale.vercel.app/carros/filtrar-carros-preco", requisicao)
+            .post("https://api-cars-sale.vercel.app/carros/filtrar-automoveis-preco", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -101,7 +100,7 @@ function VehicleList({ props }) {
         if (brand !== 'Marca' || model !== 'Modelo' || year !== 'Ano') {
             getFilter()
         } else {
-            getCars()
+            getVehicles()
         }
     }, [brand, model, year])
 
@@ -109,14 +108,14 @@ function VehicleList({ props }) {
         if (price !== 'Faixa de preço') {
             getFilterPrice()
         } else {
-            getCars()
+            getVehicles()
         }
     }, [price])
 
-    console.log(cars)
+    console.log(vehicles)
 
     useEffect(() => {
-        getCars()
+        getVehicles()
     }, [props])
 
     return (
@@ -159,19 +158,19 @@ function VehicleList({ props }) {
             </article>
 
             <figure className='vehicleList'>
-                {cars.map((item) => (
+                {vehicles.map((item) => (
                     <>
-                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_carro}`} >
+                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_automovel}`} >
                             <div className='item'>
-                                <img src={`http:/localhost:3000/files/${item.imagem_carro}`} className='carExample' />
+                                <img src={`https://api-cars-sale.vercel.app/automoveis/${item.imagem_automovel}`} className='carExample' />
                                 <div className='details'>
-                                    <span>{item.nome_carro}</span>
+                                    <span>{item.nome_automovel}</span>
                                     <div className='infoBatch'>
                                         <img src={iconCar} className='iconCar'></img>
                                     </div>
                                 </div>
                                 <span>
-                                    R${item.preco_carro},00
+                                    R${item.preco_automovel},00
                                 </span>
                             </div>
                         </Link>
