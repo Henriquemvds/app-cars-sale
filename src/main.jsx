@@ -4,7 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './assets/pages/Home'
 import Buy from './assets/pages/Buy'
-import Sell from './assets/pages/Sell'
+
 
 const router = createBrowserRouter([
   {
@@ -14,10 +14,6 @@ const router = createBrowserRouter([
   {
     path: '/buy/:id_carro',
     element: <Buy />
-  },
-  {
-    path: '/sell',
-    element: <Sell />
   }
 
 ])
