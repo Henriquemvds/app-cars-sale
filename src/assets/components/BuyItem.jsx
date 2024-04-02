@@ -23,7 +23,7 @@ function BuyItem({ props }) {
             {vehicles.map((item) => (
                 <>
                     <figure className='itemSelect'>
-                        <img src={carExample} className='carExampleBuy'/>
+                        <img src={item.imagem_automovel} className='carExampleBuy'/>
                         <div className='vehiclePresentation'>
                             <h4>{item.nome_automovel}</h4>
                             <span><b>Tipo:</b> {item.modelo_automovel}, <b>Marca:</b> {item.marca_automovel}, <b>Ano:</b> {item.ano_automovel}</span>

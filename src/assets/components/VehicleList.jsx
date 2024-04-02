@@ -90,7 +90,7 @@ function VehicleList({ props }) {
             }
         }
         axios
-            .post("https://api-cars-sale.vercel.app/carros/filtrar-automoveis-preco", requisicao)
+            .post("https://api-cars-sale-blue.vercel.app/carros/filtrar-automoveis-preco", requisicao)
             .then((response) => {
                 setCars(response.data)
             })
@@ -162,15 +162,17 @@ function VehicleList({ props }) {
                     <>
                         <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_automovel}`} >
                             <div className='item'>
-                                <img src={`https://api-cars-sale.vercel.app/automoveis/${item.imagem_automovel}`} className='carExample' />
+                                <img src={`${item.imagem_automovel}`} className='carExample' />
                                 <div className='details'>
                                     <span>{item.nome_automovel}</span>
                                     <div className='infoBatch'>
                                         <img src={iconCar} className='iconCar'></img>
                                     </div>
                                 </div>
+                                <span style={{ color: '#808080', fontSize: 10 }}>{item.descricao_automovel}</span>
+                                <span style={{ color: '#808080', fontSize: 10 }}>{item.ano_automovel}</span>
                                 <span>
-                                    R${item.preco_automovel},00
+                                    R${item.preco_automovel}
                                 </span>
                             </div>
                         </Link>

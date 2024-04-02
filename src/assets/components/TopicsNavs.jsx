@@ -17,6 +17,9 @@ function TopicsNavs() {
                 Carros Clássicos
             </span>
             <span>
+                Picapes
+            </span>
+            <span>
                 SUVs
             </span>
             <span>
