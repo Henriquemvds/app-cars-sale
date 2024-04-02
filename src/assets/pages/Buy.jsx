@@ -11,6 +11,8 @@ function Buy() {
 
   const [vehicles, setVehicles] = useState([])
 
+  let {id_automovel} = useParams()
+
   const getVehicles = () => {
     axios.get(`https://api-cars-sale-blue.vercel.app/automoveis/${id_automovel}`)
       .then((response) => setVehicles(response.data))

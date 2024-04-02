@@ -17,15 +17,11 @@ function DetailsItem({ props }) {
         <div className='detailsItem'>
                 <div className='alignInfo'>
                         <span><b>Nome do vendedor</b></span>
-                        <span>a</span>
+                        <span>Henrique Santos</span>
                     </div>
                     <div className='alignInfo'>
                         <span><b>Contato E-mail</b></span>
-                        <span>a</span>
-                    </div>
-                    <div className='alignInfo'>
-                        <span><b>Contato telefone</b></span>
-                        <span>a</span>
+                        <span>henriquem.vdossantos@gmail.com</span>
                     </div>
                     <div className='alignInfo'>
                         <span><b>Localização</b></span>
