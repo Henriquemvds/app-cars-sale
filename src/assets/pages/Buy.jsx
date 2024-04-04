@@ -4,7 +4,6 @@ import axios from 'axios'
 import '../styles/pages/Buy.css'
 import HeaderBuy from "../components/HeaderBuy"
 import BuyItem from "../components/BuyItem"
-import DetailsItem from "../components/DetailsItem"
 import Footer from "../components/Footer"
 
 function Buy() {
@@ -31,9 +30,6 @@ function Buy() {
       <div className="detailsPurchase">
         <section>
           <BuyItem props={vehicles} />
-        </section>
-        <section>
-          <DetailsItem />
         </section>
       </div>
       <footer className='about'>
