@@ -90,6 +90,44 @@
     height: 150px;
 }
 
+.detailsItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem;
+}
+
+.alignInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.alignInfo span {
+    text-align: justify;
+    margin: 0rem 0.8rem 0rem 0.8rem;
+}
+
+.infoTotal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: solid;
+    border-top: solid;
+    padding: 2rem;
+    margin: 2rem 2rem 2rem 0rem;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    gap: 2rem;
+}
+
+.interactionItem {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+
 @media screen and (max-width: 992px) {
     .detailsSelect {
         max-width: 992px;

@@ -11,7 +11,7 @@ function Footer() {
                 <h2>
                     Cars sale
                 </h2>
-                <p>Venda e compre seu automóvel neste simulador desenvolvido por Henrique Santos.</p>
+                <p>Compre seu automóvel neste simulador desenvolvido por Henrique Santos.</p>
             </div>
 
             <div className='buyAndSell'>
