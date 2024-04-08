@@ -11,6 +11,7 @@ function VehicleList({ props }) {
     const [price, setPrice] = useState('Faixa de preço')
     const [brand, setBrand] = useState('Marca')
     const [model, setModel] = useState('Modelo')
+    const [alertFilter, setAlertFilter] = useState('')
     const years = []
     const brands = [
         'Aston Martin', 'Audi', 'BMW', 'BYD',
@@ -26,14 +27,14 @@ function VehicleList({ props }) {
         'Toyota', 'Volkswagen', 'Volvo'
     ]
     const models = [
-        'Hatch', 'Sedan', 'SUV', 'Picapes', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
+        'Hatch', 'Sedan', 'SUV', 'Caminhote', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
 
     const getVehicles = () => {
         props.map(() => setVehicles([...props]))
     }
 
-    var maxValue = (new Date()).getFullYear();
+    var maxValue = (new Date()).getFullYear() + 1;
     var minValue = 1950;
 
     for (let year = minValue; year <= maxValue; year++) {
@@ -44,73 +45,76 @@ function VehicleList({ props }) {
         let requisicao = {
             marca_automovel: brand,
             modelo_automovel: model,
-            ano_automovel: year
-        }
-        axios
-            .post("https://api-cars-sale-blue.vercel.app/automoveis/filtrar-automoveis", requisicao)
-            .then((response) => {
-                setCars(response.data)
-            })
-    }
-
-    const getFilterPrice = () => {
-        let requisicao = {
+            ano_automovel: year,
             preco_automovel1: null,
             preco_automovel2: null
         }
         if (price == 1) {
             requisicao = {
-               preco_automovel1: 6000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 6000,
                 preco_automovel2: 10000
             }
         } else if (price == 2) {
             requisicao = {
-               preco_automovel1: 10000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 10000,
                 preco_automovel2: 50000
             }
         } else if (price == 3) {
             requisicao = {
-               preco_automovel1: 50000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 50000,
                 preco_automovel2: 100000
             }
         } else if (price == 4) {
             requisicao = {
-               preco_automovel1: 100000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 100000,
                 preco_automovel2: 200000
             }
         } else if (price == 5) {
             requisicao = {
-               preco_automovel1: 300000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 300000,
                 preco_automovel2: 400000
             }
-        } else if (price == 5) {
+        } else if (price == 6) {
             requisicao = {
-               preco_automovel1: 400000,
+                marca_automovel: brand,
+                modelo_automovel: model,
+                ano_automovel: year,
+                preco_automovel1: 400000,
                 preco_automovel2: 500000
             }
         }
         axios
-            .post("https://api-cars-sale-blue.vercel.app/carros/filtrar-automoveis-preco", requisicao)
+            .post("https://api-cars-sale-blue.vercel.app/automoveis/filtrar-automoveis", requisicao)
             .then((response) => {
-                setCars(response.data)
+                setVehicles(response.data)
             })
     }
 
     useEffect(() => {
-        if (brand !== 'Marca' || model !== 'Modelo' || year !== 'Ano') {
+        if (brand !== 'Marca' || model !== 'Modelo' || year !== 'Ano' || price !== 'Faixa de preço') {
+            setAlertFilter('Modifique todos os filtros para obter resultados!')
             getFilter()
         } else {
+            setAlertFilter('Faça sua filtragem!')
             getVehicles()
         }
-    }, [brand, model, year])
+    }, [brand, model, year, price])
 
-    useEffect(() => {
-        if (price !== 'Faixa de preço') {
-            getFilterPrice()
-        } else {
-            getVehicles()
-        }
-    }, [price])
 
     console.log(vehicles)
 
@@ -122,7 +126,7 @@ function VehicleList({ props }) {
         <div>
             <article className='dropdownInteraction'>
                 <select className='dropdown' onChange={e => setBrand(e.target.value)}>
-                    <option>Marca</option>
+                    <option value='Marca'>Marca</option>
                     {brands.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -130,7 +134,7 @@ function VehicleList({ props }) {
                     ))}
 
                 </select>
-                <select className='dropdown' onChange={e => setModel(e.target.value)}>
+                <select className='dropdown' onChange={e => setModel(e.target.value)} >
                     <option>Modelo</option>
                     {models.map((item) => (
                         <>
@@ -138,7 +142,7 @@ function VehicleList({ props }) {
                         </>
                     ))}
                 </select>
-                <select className='dropdown' onChange={e => setYear(e.target.value)}>
+                <select className='dropdown' onChange={e => setYear(e.target.value)} >
                     <option value='Ano'>Ano</option>
                     {years.map((item) => (
                         <>
@@ -146,7 +150,7 @@ function VehicleList({ props }) {
                         </>
                     ))}
                 </select>
-                <select className='dropdown' onChange={e => setPrice(e.target.value)}>
+                <select className='dropdown' onChange={e => setPrice(e.target.value)} >
                     <option>Faixa de preço</option>
                     <option value='1'>R$6.000,00 até 10.000,00</option>
                     <option value='2'>R$10.000,00 até 50.000,00</option>
@@ -155,6 +159,9 @@ function VehicleList({ props }) {
                     <option value='5'>R$200.000,00 até 300.000,00</option>
                     <option value='6'>R$400.000,00 até 500.000,00</option>
                 </select>
+
+                <span style={{ color: '#808080' }}>{alertFilter}</span>
+
             </article>
 
             <figure className='vehicleList'>
@@ -172,7 +179,7 @@ function VehicleList({ props }) {
                                 <span style={{ color: '#808080', fontSize: 10 }}>{item.descricao_automovel}</span>
                                 <span style={{ color: '#808080', fontSize: 10 }}>{item.ano_automovel}</span>
                                 <span>
-                                    R${item.preco_automovel}
+                                    {item.preco_automovel.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                 </span>
                             </div>
                         </Link>

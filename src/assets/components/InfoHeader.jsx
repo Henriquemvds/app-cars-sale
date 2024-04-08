@@ -1,6 +1,23 @@
+import { useState, useEffect } from 'react'
 import '../styles/components/InfoHeader.css'
 
-function InfoHeader() {
+function InfoHeader({props}) {
+
+    const [vehicles, setVehicles] = useState([])
+
+    let countVehicles = 0
+
+    const getVehicles = () => {
+        props.map(() => setVehicles([...props]))
+    }
+    for(let i = 0; countVehicles < vehicles.length; i++){
+        countVehicles = i
+    }
+
+
+   useEffect(() => {
+        getVehicles()
+    }, [props])
 
     return (
         <div>
@@ -15,7 +32,7 @@ function InfoHeader() {
             </div>
             <div className='batch'>
                 <h3>Carros ofertados</h3>
-                <span>985</span>
+                <span>{countVehicles}</span>
             </div>
         </div>
     )
