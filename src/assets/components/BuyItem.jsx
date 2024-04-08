@@ -47,50 +47,50 @@ function BuyItem({ props }) {
             setPrice48('')
         } else if (method == 1) {
             vehicles.map((item) => {
-                let installment3 = (Number(item.preco_automovel)  - 10.000) / 3
-                let installment6 = (Number(item.preco_automovel)  - 10.000 ) / 6
-                let installment12 = ((Number(item.preco_automovel)  - 10.000) + (feesYear1 * Number(item.preco_automovel))) / 12
-                let installment24 =((Number(item.preco_automovel)  - 10.000) + (feesYear2 * Number(item.preco_automovel))) / 24
-                let installment36 = ((Number(item.preco_automovel)  - 10.000) + (feesYear3 * Number(item.preco_automovel))) / 36
-                let installment48 = ((Number(item.preco_automovel)  - 10.000) + (feesYear4 * Number(item.preco_automovel))) / 48
-             
+                let installment3 = (item.preco_automovel - 10000) / 3
+                let installment6 = (item.preco_automovel - 10000) / 6
+                let installment12 = ((item.preco_automovel - 10000) + (feesYear1 * item.preco_automovel)) / 12
+                let installment24 = ((item.preco_automovel - 10000) + (feesYear2 * item.preco_automovel)) / 24
+                let installment36 = ((item.preco_automovel - 10000) + (feesYear3 * item.preco_automovel)) / 36
+                let installment48 = ((item.preco_automovel - 10000) + (feesYear4 * item.preco_automovel)) / 48
+
                 setPrice('Com R$10.000 de entrada ficando por: ')
                 if (installment3 <= 0) {
                     setPrice3('')
                 } else {
-                    setPrice3(`3x de R$${installment3.toFixed(3)} de ${(Number(item.preco_automovel)  - 10.000).toFixed(3)}`)
+                    setPrice3(`3x de ${installment3.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - 10000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment6 <= 0) {
                     setPrice6('')
                 } else {
-                    setPrice6(`6x de R$${installment6.toFixed(3)} de ${(Number(item.preco_automovel)  - 10.000).toFixed(3)}`)
+                    setPrice6(`6x de ${installment6.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - 10000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment12 <= 0) {
                     setPrice12('')
                 } else {
-                    setPrice12(`12x de R$${installment12.toFixed(3)} de R$${((Number(item.preco_automovel)  - 10.000) + (feesYear1 * Number(item.preco_automovel))).toFixed(3)}`)
+                    setPrice12(`12x de ${installment12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear1 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment24 <= 0) {
                     setPrice24('')
                 } else {
-                    setPrice24(`24x de R$${installment24.toFixed(3)} de R$${((Number(item.preco_automovel)  - 10.000) + (feesYear2 * Number(item.preco_automovel))).toFixed(3)}`)
+                    setPrice24(`24x de ${installment24.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear2 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment36 <= 0) {
                     setPrice36('')
                 } else {
-                    setPrice36(`36x de R$${installment36.toFixed(3)} de R$${((Number(item.preco_automovel)  - 10.000) + (feesYear3 * Number(item.preco_automovel))).toFixed(3)}`)
+                    setPrice36(`36x de ${installment36.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear3 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment48 <= 0) {
                     setPrice48('')
                 } else {
-                    setPrice48(`48x de R$${installment48.toFixed(3)} de R$${((Number(item.preco_automovel)  - 10.000) + (feesYear4 * Number(item.preco_automovel))).toFixed(3)}`)
+                    setPrice48(`48x de ${installment48.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear4 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
             }
             )
         } else if (method == 2 || method == 3) {
             vehicles.map((item) => {
-                let installment = Number(item.preco_automovel) - Number(item.preco_automovel) * 0.1
-                setPrice(`R$${installment.toFixed(3)}`)
+                let installment = item.preco_automovel - item.preco_automovel * 0.1
+                setPrice(`${installment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 setPrice3('')
                 setPrice6('')
                 setPrice12('')
@@ -114,11 +114,15 @@ function BuyItem({ props }) {
                             <img src={item.imagem_automovel} className='carExampleBuy' />
                             <div className='vehiclePresentation'>
                                 <h4>{item.nome_automovel}</h4>
-                                <span><b>Tipo:</b> {item.modelo_automovel}, <b>Marca:</b> {item.marca_automovel}, <b>Ano:</b> {item.ano_automovel}</span>
+                                <span>
+                                    <b>Tipo:</b> {item.modelo_automovel},
+                                    <b>Marca:</b> {item.marca_automovel},
+                                    <b>Ano:</b> {item.ano_automovel},
+                                    <b>Km: </b>{item.quilometragem_automovel}</span>
                             </div>
                             <div className='infoPrice'>
                                 <span><b>Preço</b></span>
-                                <span>R${item.preco_automovel}</span>
+                                <span>{item.preco_automovel.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
                             </div>
                             <div className='infoMethod'>
                                 <span><b>Método de pagamento</b></span>

@@ -12,7 +12,7 @@ const [vehicles, setVehicles] = useState([])
 
 
   const getVehicles= () => {
-    axios.get('https://api-cars-sale-blue.vercel.app/automoveis')
+    axios.get('https://api-cars-sale-blue.vercel.app/automoveis?offset=0&limit=0')
         .then((response) => setVehicles(response.data))
 }
 
@@ -31,7 +31,7 @@ useEffect(() => {
         <TopicsNavs />
       </nav>
       <header className='info'>
-        <InfoHeader />
+        <InfoHeader props={vehicles}/>
       </header>
       <section className="items">
         <VehicleList props={vehicles}/>
