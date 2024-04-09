@@ -1,16 +1,19 @@
 import axios from 'axios'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import '../styles/components/VehicleList.css'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import Pagination from '@mui/material/Pagination';
 
 function VehicleList({ props }) {
 
     const [vehicles, setVehicles] = useState([])
+    const [vehiclesPages, setVehiclesPages] = useState([])
     const [year, setYear] = useState('Ano')
     const [price, setPrice] = useState('Faixa de preço')
     const [brand, setBrand] = useState('Marca')
     const [model, setModel] = useState('Modelo')
+    const [pageSelect, setPageSelect] = useSearchParams()
     const [alertFilter, setAlertFilter] = useState('')
     const years = []
     const brands = [
@@ -29,9 +32,15 @@ function VehicleList({ props }) {
     const models = [
         'Hatch', 'Sedan', 'SUV', 'Caminhote', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
+    let countVehicles = 0
+    const limitList = 10
 
     const getVehicles = () => {
         props.map(() => setVehicles([...props]))
+        setVehiclesPages(paginate(props, 10, page))
+    }
+    for (let i = 0; countVehicles < vehicles.length; i++) {
+        countVehicles = i
     }
 
     var maxValue = (new Date()).getFullYear() + 1;
@@ -102,6 +111,8 @@ function VehicleList({ props }) {
             .post("https://api-cars-sale-blue.vercel.app/automoveis/filtrar-automoveis", requisicao)
             .then((response) => {
                 setVehicles(response.data)
+                setVehiclesPages(response.data)
+                setPageSelect({ page: '1' })
             })
     }
 
@@ -115,8 +126,17 @@ function VehicleList({ props }) {
         }
     }, [brand, model, year, price])
 
+    const paginate = (array, page_size, page_number) => {
+        return array.slice((page_number - 1) * page_size, page_number * page_size);
+    }
 
-    console.log(vehicles)
+    const page = useMemo(() => {
+        return Number(pageSelect.get('page') || '1')
+    }, [pageSelect])
+
+    useEffect(() => {
+        setVehiclesPages(paginate(vehicles, 10, page))
+    }, [page])
 
     useEffect(() => {
         getVehicles()
@@ -165,7 +185,7 @@ function VehicleList({ props }) {
             </article>
 
             <figure className='vehicleList'>
-                {vehicles.map((item) => (
+                {vehiclesPages.map((item) => (
                     <>
                         <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_automovel}`} >
                             <div className='item'>
@@ -187,6 +207,15 @@ function VehicleList({ props }) {
                 ))}
 
             </figure>
+            {((countVehicles > 0 && countVehicles != limitList) &&
+                <Pagination
+                    page={page}
+                    onChange={(_, newPage) => setPageSelect({ page: newPage.toString() }, { replace: true })}
+                    count={Math.ceil(countVehicles / limitList)}
+                    variant="outlined"
+                    shape="rounded"
+                />
+            )}
         </div>
 
     )
