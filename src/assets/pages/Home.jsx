@@ -12,7 +12,7 @@ const [vehicles, setVehicles] = useState([])
 
 
   const getVehicles= () => {
-    axios.get('https://api-cars-sale-blue.vercel.app/automoveis?offset=0&limit=0')
+    axios.get('https://api-cars-sale-blue.vercel.app/automoveis/')
         .then((response) => setVehicles(response.data))
 }
 
