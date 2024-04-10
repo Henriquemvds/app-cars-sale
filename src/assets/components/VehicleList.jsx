@@ -44,11 +44,18 @@ function VehicleList({ props }) {
     }
     let countVehicles = 0
     let countVehiclesFilter = 0
-    const limitList = 10
+    let limitList = 0
+
+    const { innerWidth } = window;
+    if (innerWidth > 440){
+        limitList = 50
+    } else if (innerWidth <= 440) {
+        limitList = 10
+    }
 
     const getVehicles = () => {
         props.map(() => setVehicles([...props]))
-        setVehiclesPages(paginate(props, 10, page))
+        setVehiclesPages(paginate(props, limitList, page))
     }
     for (let i = 0; countVehicles < vehicles.length; i++) {
         countVehicles = i
@@ -81,6 +88,7 @@ function VehicleList({ props }) {
         });
         return resultado;
     }
+
 
 
     const getFilter = () => {
@@ -148,7 +156,7 @@ function VehicleList({ props }) {
     }, [pageSelect])
 
     useEffect(() => {
-        setVehiclesPages(paginate(vehicles, 10, page))
+        setVehiclesPages(paginate(vehicles, limitList, page))
     }, [page])
 
     useEffect(() => {
