@@ -4,9 +4,8 @@ import '../styles/components/BuyItem.css'
 import iconCorrect from '../icons/correct.svg'
 import { useEffect, useState } from 'react'
 
-function BuyItem({ props }) {
-
-    const [vehicles, setVehicles] = useState([])
+function BuyItem() {
+    const [vehicle, setVehicle] = useState([])
     const [method, setMethod] = useState('0')
     const [price, setPrice] = useState('R$0')
     const [price3, setPrice3] = useState('')
@@ -20,11 +19,12 @@ function BuyItem({ props }) {
     let feesYear3 = 0.84
     let feesYear4 = 1.12
 
-    const getVehicles = () => {
-        props.map(() => setVehicles([...props]))
-    }
-
     let { id_automovel } = useParams()
+
+    const getVehicle = () => {
+        axios.get(`https://api-cars-sale-blue.vercel.app/automoveis/${id_automovel}`)
+          .then((response) => setVehicle(response.data))
+      }
 
     const buyCar = () => {
         if (method == 0) {
@@ -46,7 +46,7 @@ function BuyItem({ props }) {
             setPrice36('')
             setPrice48('')
         } else if (method == 1) {
-            vehicles.map((item) => {
+            vehicle.map((item) => {
                 let installment3 = (item.preco_automovel - 10000) / 3
                 let installment6 = (item.preco_automovel - 10000) / 6
                 let installment12 = ((item.preco_automovel - 10000) + (feesYear1 * item.preco_automovel)) / 12
@@ -88,7 +88,7 @@ function BuyItem({ props }) {
             }
             )
         } else if (method == 2 || method == 3) {
-            vehicles.map((item) => {
+            vehicle.map((item) => {
                 let installment = item.preco_automovel - item.preco_automovel * 0.1
                 setPrice(`${installment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 setPrice3('')
@@ -101,14 +101,14 @@ function BuyItem({ props }) {
         }
     }, [method])
 
-    useEffect(() => {
-        getVehicles()
-    }, [props])
+  useEffect(() => {
+    getVehicle()
+  }, [])
 
     return (
         <div>
             <div className='detailsSelect'>
-                {vehicles.map((item) => (
+                {vehicle.map((item) => (
                     <>
                         <figure className='itemSelect'>
                             <img src={item.imagem_automovel} className='carExampleBuy' />

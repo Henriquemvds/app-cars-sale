@@ -2,12 +2,13 @@ import axios from 'axios'
 import { Link, useSearchParams } from "react-router-dom";
 import iconCar from '../icons/car.svg'
 import '../styles/components/VehicleList.css'
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
+import { VehiclesContext } from '../context/vehicles'
 import Pagination from '@mui/material/Pagination';
 
-function VehicleList({ props }) {
+function VehicleList() {
 
-    const [vehicles, setVehicles] = useState([])
+    const { vehicles, getVehicles } = useContext(VehiclesContext)
     const [vehiclesPages, setVehiclesPages] = useState([])
     const [vehiclesFilter, setVehiclesFilter] = useState([])
     const [year, setYear] = useState('0')
@@ -53,10 +54,6 @@ function VehicleList({ props }) {
         limitList = 10
     }
 
-    const getVehicles = () => {
-        props.map(() => setVehicles([...props]))
-        setVehiclesPages(paginate(props, limitList, page))
-    }
     for (let i = 0; countVehicles < vehicles.length; i++) {
         countVehicles = i
     }
@@ -88,8 +85,6 @@ function VehicleList({ props }) {
         });
         return resultado;
     }
-
-
 
     const getFilter = () => {
         requisicao.marca_automovel = brand
@@ -157,16 +152,8 @@ function VehicleList({ props }) {
 
     useEffect(() => {
         setVehiclesPages(paginate(vehicles, limitList, page))
-    }, [page])
+    }, [page, vehicles])
 
-    useEffect(() => {
-        getVehicles()
-    }, [props])
-
-    console.log(requisicao)
-    console.log(vehicles)
-    console.log(vehiclesPages)
-    console.log(vehiclesFilter)
     return (
         <div>
             <article className='dropdownInteraction'>

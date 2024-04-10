@@ -1,23 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useContext } from 'react'
+import { VehiclesContext } from '../context/vehicles'
 import '../styles/components/InfoHeader.css'
 
-function InfoHeader({props}) {
+function InfoHeader() {
 
-    const [vehicles, setVehicles] = useState([])
+    const { vehicles } = useContext(VehiclesContext)
 
     let countVehicles = 0
-
-    const getVehicles = () => {
-        props.map(() => setVehicles([...props]))
-    }
+  
     for(let i = 0; countVehicles < vehicles.length; i++){
         countVehicles = i
     }
-
-
-   useEffect(() => {
-        getVehicles()
-    }, [props])
 
     return (
         <div>
