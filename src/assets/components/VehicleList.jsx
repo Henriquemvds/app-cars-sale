@@ -9,12 +9,15 @@ function VehicleList({ props }) {
 
     const [vehicles, setVehicles] = useState([])
     const [vehiclesPages, setVehiclesPages] = useState([])
-    const [year, setYear] = useState('Ano')
-    const [price, setPrice] = useState('Faixa de preço')
-    const [brand, setBrand] = useState('Marca')
-    const [model, setModel] = useState('Modelo')
+    const [vehiclesFilter, setVehiclesFilter] = useState([])
+    const [year, setYear] = useState('0')
+    const [price, setPrice] = useState('0')
+    const [brand, setBrand] = useState('0')
+    const [model, setModel] = useState('0')
     const [pageSelect, setPageSelect] = useSearchParams()
-    const [alertFilter, setAlertFilter] = useState('')
+    const [alertFilter, setAlertFilter] = useState('Faça sua filtragem pelos preços!')
+    const [filter, setFilter] = useState(false)
+
     const years = []
     const brands = [
         'Aston Martin', 'Audi', 'BMW', 'BYD',
@@ -32,7 +35,15 @@ function VehicleList({ props }) {
     const models = [
         'Hatch', 'Sedan', 'SUV', 'Caminhote', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
     ]
+    let requisicao = {
+        marca_automovel: null,
+        modelo_automovel: null,
+        ano_automovel: null,
+        preco_automovel1: null,
+        preco_automovel2: null
+    }
     let countVehicles = 0
+    let countVehiclesFilter = 0
     const limitList = 10
 
     const getVehicles = () => {
@@ -42,87 +53,89 @@ function VehicleList({ props }) {
     for (let i = 0; countVehicles < vehicles.length; i++) {
         countVehicles = i
     }
+    for (let i = 0; countVehiclesFilter < vehiclesFilter.length; i++) {
+        countVehiclesFilter = i
+    }
 
     var maxValue = (new Date()).getFullYear() + 1;
-    var minValue = 1950;
-
+    var minValue = 1980;
     for (let year = minValue; year <= maxValue; year++) {
         years.push(year)
     }
 
-    const getFilter = () => {
-        let requisicao = {
-            marca_automovel: brand,
-            modelo_automovel: model,
-            ano_automovel: year,
-            preco_automovel1: null,
-            preco_automovel2: null
-        }
-        if (price == 1) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 6000,
-                preco_automovel2: 10000
-            }
-        } else if (price == 2) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 10000,
-                preco_automovel2: 50000
-            }
-        } else if (price == 3) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 50000,
-                preco_automovel2: 100000
-            }
-        } else if (price == 4) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 100000,
-                preco_automovel2: 200000
-            }
-        } else if (price == 5) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 300000,
-                preco_automovel2: 400000
-            }
-        } else if (price == 6) {
-            requisicao = {
-                marca_automovel: brand,
-                modelo_automovel: model,
-                ano_automovel: year,
-                preco_automovel1: 400000,
-                preco_automovel2: 500000
-            }
-        }
-        axios
-            .post("https://api-cars-sale-blue.vercel.app/automoveis/filtrar-automoveis", requisicao)
-            .then((response) => {
-                setVehicles(response.data)
-                setVehiclesPages(response.data)
-                setPageSelect({ page: '1' })
-            })
+    const find = (values) => {
+        setFilter(true)
+        setAlertFilter('Se não obter resultados, tente adicionar mais filtros!')
+        const resultado = vehicles.filter((item) => {
+            const marca_automovel = values.marca_automovel ?? item.marca_automovel;
+            const modelo_automovel = values.modelo_automovel ?? item.modelo_automovel;
+            const ano_automovel = values.ano_automovel ?? item.ano_automovel;
+            const preco_automovel1 = values.preco_automovel1 ?? values.preco_automovel1;
+            const preco_automovel2 = values.preco_automovel2 ?? values.preco_automovel2;
+            if (marca_automovel === item.marca_automovel &&
+                modelo_automovel === item.modelo_automovel &&
+                ano_automovel === item.ano_automovel &&
+                preco_automovel1 <= item.preco_automovel &&
+                preco_automovel2 >= item.preco_automovel
+            ) return item;
+        });
+        return resultado;
     }
 
+
+    const getFilter = () => {
+        requisicao.marca_automovel = brand
+        requisicao.modelo_automovel = model
+        requisicao.ano_automovel = year
+
+        if (brand == '0') {
+            requisicao.marca_automovel = null
+        }
+        if (model == '0') {
+            requisicao.modelo_automovel = null
+        }
+        if (year == '0') {
+            requisicao.ano_automovel = null
+        }
+
+        if (price == '0') {
+            requisicao.preco_automovel1 = null
+            requisicao.preco_automovel2 = null
+        } else if (price == '1') {
+            requisicao.preco_automovel1 = 6000
+            requisicao.preco_automovel2 = 10000
+        } else if (price == '2') {
+            requisicao.preco_automovel1 = 10000
+            requisicao.preco_automovel2 = 50000
+        } else if (price == '3') {
+            requisicao.preco_automovel1 = 50000
+            requisicao.preco_automovel2 = 100000
+        } else if (price == '4') {
+            requisicao.preco_automovel1 = 100000
+            requisicao.preco_automovel2 = 200000
+        } else if (price == '5') {
+            requisicao.preco_automovel1 = 300000
+            requisicao.preco_automovel2 = 400000
+        } else if (price == '6') {
+            requisicao.preco_automovel1 = 400000
+            requisicao.preco_automovel2 = 500000
+        }
+        setVehiclesFilter(find({
+            marca_automovel: requisicao.marca_automovel,
+            modelo_automovel: requisicao.modelo_automovel,
+            ano_automovel: requisicao.ano_automovel,
+            preco_automovel1: requisicao.preco_automovel1,
+            preco_automovel2: requisicao.preco_automovel2
+        }))
+
+    }
+    
     useEffect(() => {
-        if (brand !== 'Marca' || model !== 'Modelo' || year !== 'Ano' || price !== 'Faixa de preço') {
-            setAlertFilter('Modifique todos os filtros para obter resultados!')
+        if (brand !== '0' || model !== '0' || year !== '0' || price !== '0') {
             getFilter()
         } else {
-            setAlertFilter('Faça sua filtragem!')
-            getVehicles()
+            setFilter(false)
+            setAlertFilter('Faça sua filtragem pelos preços!')
         }
     }, [brand, model, year, price])
 
@@ -142,11 +155,15 @@ function VehicleList({ props }) {
         getVehicles()
     }, [props])
 
+    console.log(requisicao)
+    console.log(vehicles)
+    console.log(vehiclesPages)
+    console.log(vehiclesFilter)
     return (
         <div>
             <article className='dropdownInteraction'>
                 <select className='dropdown' onChange={e => setBrand(e.target.value)}>
-                    <option value='Marca'>Marca</option>
+                    <option value='0'>Marca</option>
                     {brands.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -155,7 +172,7 @@ function VehicleList({ props }) {
 
                 </select>
                 <select className='dropdown' onChange={e => setModel(e.target.value)} >
-                    <option>Modelo</option>
+                    <option value='0'>Modelo</option>
                     {models.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -163,7 +180,7 @@ function VehicleList({ props }) {
                     ))}
                 </select>
                 <select className='dropdown' onChange={e => setYear(e.target.value)} >
-                    <option value='Ano'>Ano</option>
+                    <option value='0'>Ano</option>
                     {years.map((item) => (
                         <>
                             <option value={item}>{item}</option>
@@ -171,7 +188,7 @@ function VehicleList({ props }) {
                     ))}
                 </select>
                 <select className='dropdown' onChange={e => setPrice(e.target.value)} >
-                    <option>Faixa de preço</option>
+                    <option value='0'>Faixa de preço</option>
                     <option value='1'>R$6.000,00 até 10.000,00</option>
                     <option value='2'>R$10.000,00 até 50.000,00</option>
                     <option value='3'>R$50.000,00 até 100.000,00</option>
@@ -185,7 +202,7 @@ function VehicleList({ props }) {
             </article>
 
             <figure className='vehicleList'>
-                {vehiclesPages.map((item) => (
+                {!filter ? vehiclesPages.map((item) => (
                     <>
                         <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_automovel}`} >
                             <div className='item'>
@@ -204,10 +221,31 @@ function VehicleList({ props }) {
                             </div>
                         </Link>
                     </>
-                ))}
+                )) : vehiclesFilter.map((item) => (
+                    <>
+                        <Link style={{ textDecoration: 'none', color: '#000' }} to={`/buy/${item.id_automovel}`} >
+                            <div className='item'>
+                                <img src={`${item.imagem_automovel}`} className='carExample' />
+                                <div className='details'>
+                                    <span>{item.nome_automovel}</span>
+                                    <div className='infoBatch'>
+                                        <img src={iconCar} className='iconCar'></img>
+                                    </div>
+                                </div>
+                                <span style={{ color: '#808080', fontSize: 10 }}>{item.descricao_automovel}</span>
+                                <span style={{ color: '#808080', fontSize: 10 }}>{item.ano_automovel}</span>
+                                <span>
+                                    {item.preco_automovel.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                </span>
+                            </div>
+                        </Link>
+                    </>
+                ))
+
+                }
 
             </figure>
-            {((countVehicles > 0 && countVehicles != limitList) &&
+            {!filter ? (countVehicles > 0 && countVehicles != limitList) &&
                 <Pagination
                     page={page}
                     onChange={(_, newPage) => setPageSelect({ page: newPage.toString() }, { replace: true })}
@@ -215,7 +253,15 @@ function VehicleList({ props }) {
                     variant="outlined"
                     shape="rounded"
                 />
-            )}
+                : (countVehiclesFilter > 0 && countVehiclesFilter != limitList) &&
+                <Pagination
+                    page={page}
+                    onChange={(_, newPage) => setPageSelect({ page: newPage.toString() }, { replace: true })}
+                    count={Math.ceil(countVehiclesFilter / limitList)}
+                    variant="outlined"
+                    shape="rounded"
+                />
+            }
         </div>
 
     )
