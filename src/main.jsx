@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { VehiclesProvider } from './assets/context/vehicles'
 import Home from './assets/pages/Home'
 import Buy from './assets/pages/Buy'
 
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
+<VehiclesProvider>
     <RouterProvider router={router} />
+</VehiclesProvider>
 
 )

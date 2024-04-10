@@ -5,20 +5,10 @@ import TopicsNavs from "../components/TopicsNavs"
 import InfoHeader from "../components/InfoHeader"
 import VehicleList from "../components/VehicleList"
 import Footer from "../components/Footer"
+import { useContext } from 'react'
+import { VehiclesContext } from '../context/vehicles'
 
 function Home() {
-
-const [vehicles, setVehicles] = useState([])
-
-
-  const getVehicles= () => {
-    axios.get('https://api-cars-sale-blue.vercel.app/automoveis/')
-        .then((response) => setVehicles(response.data))
-}
-
-useEffect(() => {
-  getVehicles()
-}, [])
 
   return (
     <main className="content">
@@ -31,10 +21,10 @@ useEffect(() => {
         <TopicsNavs />
       </nav>
       <header className='info'>
-        <InfoHeader props={vehicles}/>
+        <InfoHeader/>
       </header>
       <section className="items">
-        <VehicleList props={vehicles}/>
+        <VehicleList/>
       </section>
       <footer className='about'>
         <Footer />
