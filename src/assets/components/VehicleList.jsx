@@ -23,16 +23,13 @@ function VehicleList() {
     const years = []
     const brands = [
         'Aston Martin', 'Audi', 'BMW', 'BYD',
-        'CAOA Chery', 'Chevrolet', 'Citroën',
-        'Effa', 'Ferrari', 'Fiat', 'Ford', 'Foton',
-        'Haval', 'Honda', 'Hyundai', 'Iveco',
-        'JAC', 'Jaguar', 'Jeep', 'Kia',
-        'Lamborghini', 'Land Rover', 'Lexus', 'Maserati',
-        'McLaren', 'Mercedes-AMG', 'Mercedes-Benz', 'Mini',
-        'Mitsubishi', 'Nissan', 'Ora',
+        'Chevrolet', 'Citroën', 
+        'Ferrari', 'Fiat', 'Ford', 'Honda', 'Hyundai', 'Iveco',
+        'JAC', 'Jaguar', 'Jeep', 'Land Rover', 'Lexus', 'Maserati',
+        'McLaren', 'Mercedes-AMG', 'Mercedes-Benz', 
+        'Mitsubishi', 'Nissan',
         'Peugeot', 'Porsche', 'RAM', 'Renault',
-        'Rolls-Royce', 'Seres', 'Subaru', 'Suzuki',
-        'Toyota', 'Volkswagen', 'Volvo'
+        'Toyota', 'Volkswagen',
     ]
     const models = [
         'Hatch', 'Sedan', 'SUV', 'Caminhote', 'Crossover', 'Perua', 'Minivan', 'Esportivo'
