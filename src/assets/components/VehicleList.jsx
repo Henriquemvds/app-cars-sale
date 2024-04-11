@@ -18,6 +18,7 @@ function VehicleList() {
     const [pageSelect, setPageSelect] = useSearchParams()
     const [alertFilter, setAlertFilter] = useState('Faça sua filtragem pelos preços!')
     const [filter, setFilter] = useState(false)
+    const [disable, setDisable] = useState(false)
 
     const years = []
     const brands = [
@@ -152,6 +153,16 @@ function VehicleList() {
 
     useEffect(() => {
         setVehiclesPages(paginate(vehicles, limitList, page))
+
+        const verificationCategorie = vehicles.every((item) => 
+        item.categoria_automovel == 'Caminhotes' || 
+        item.categoria_automovel == 'SUVs');
+
+        if (verificationCategorie == true) {
+            setDisable(true)
+        } else {
+            setDisable(false)
+        }
     }, [page, vehicles])
 
     return (
@@ -166,7 +177,7 @@ function VehicleList() {
                     ))}
 
                 </select>
-                <select className='dropdown' onChange={e => setModel(e.target.value)} >
+                <select disabled={disable} className='dropdown' onChange={e => setModel(e.target.value)} >
                     <option value='0'>Modelo</option>
                     {models.map((item) => (
                         <>
