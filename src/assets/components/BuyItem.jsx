@@ -14,6 +14,7 @@ function BuyItem() {
     const [price24, setPrice24] = useState('')
     const [price36, setPrice36] = useState('')
     const [price48, setPrice48] = useState('')
+    let paymentInitial = 10000
     let feesYear1 = 0.28
     let feesYear2 = 0.56
     let feesYear3 = 0.84
@@ -47,43 +48,48 @@ function BuyItem() {
             setPrice48('')
         } else if (method == 1) {
             vehicle.map((item) => {
-                let installment3 = (item.preco_automovel - 10000) / 3
-                let installment6 = (item.preco_automovel - 10000) / 6
-                let installment12 = ((item.preco_automovel - 10000) + (feesYear1 * item.preco_automovel)) / 12
-                let installment24 = ((item.preco_automovel - 10000) + (feesYear2 * item.preco_automovel)) / 24
-                let installment36 = ((item.preco_automovel - 10000) + (feesYear3 * item.preco_automovel)) / 36
-                let installment48 = ((item.preco_automovel - 10000) + (feesYear4 * item.preco_automovel)) / 48
+                if (item.preco_automovel <= 30000){
+                    paymentInitial = 5000
+                } else {
+                    paymentInitial = 10000
+                }
+                let installment3 = (item.preco_automovel - paymentInitial) / 3
+                let installment6 = (item.preco_automovel - paymentInitial) / 6
+                let installment12 = ((item.preco_automovel - paymentInitial) + (feesYear1 * item.preco_automovel)) / 12
+                let installment24 = ((item.preco_automovel - paymentInitial) + (feesYear2 * item.preco_automovel)) / 24
+                let installment36 = ((item.preco_automovel - paymentInitial) + (feesYear3 * item.preco_automovel)) / 36
+                let installment48 = ((item.preco_automovel - paymentInitial) + (feesYear4 * item.preco_automovel)) / 48
 
-                setPrice('Com R$10.000 de entrada ficando por: ')
+                setPrice(`Com ${paymentInitial.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de entrada ficando por: `)
                 if (installment3 <= 0) {
                     setPrice3('')
                 } else {
-                    setPrice3(`3x de ${installment3.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - 10000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice3(`3x de ${installment3.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - paymentInitial).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment6 <= 0) {
                     setPrice6('')
                 } else {
-                    setPrice6(`6x de ${installment6.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - 10000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice6(`6x de ${installment6.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${(item.preco_automovel - paymentInitial).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment12 <= 0) {
                     setPrice12('')
                 } else {
-                    setPrice12(`12x de ${installment12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear1 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice12(`12x de ${installment12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - paymentInitial) + (feesYear1 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment24 <= 0) {
                     setPrice24('')
                 } else {
-                    setPrice24(`24x de ${installment24.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear2 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice24(`24x de ${installment24.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - paymentInitial) + (feesYear2 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment36 <= 0) {
                     setPrice36('')
                 } else {
-                    setPrice36(`36x de ${installment36.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear3 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice36(`36x de ${installment36.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - paymentInitial) + (feesYear3 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
                 if (installment48 <= 0) {
                     setPrice48('')
                 } else {
-                    setPrice48(`48x de ${installment48.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - 10000) + (feesYear4 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
+                    setPrice48(`48x de ${installment48.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} de ${((item.preco_automovel - paymentInitial) + (feesYear4 * item.preco_automovel)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`)
                 }
             }
             )
