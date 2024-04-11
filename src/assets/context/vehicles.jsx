@@ -17,7 +17,7 @@ export const VehiclesProvider = ({ children }) => {
     }, [])
 
     return (
-        <VehiclesContext.Provider value={{ vehicles, getVehicles }}>
+        <VehiclesContext.Provider value={{ vehicles, setVehicles, getVehicles }}>
             {children}
         </VehiclesContext.Provider>
     )
