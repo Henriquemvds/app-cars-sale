@@ -75,8 +75,8 @@ function VehicleList() {
             const marca_automovel = values.marca_automovel ?? item.marca_automovel;
             const modelo_automovel = values.modelo_automovel ?? item.modelo_automovel;
             const ano_automovel = values.ano_automovel ?? item.ano_automovel;
-            const preco_automovel1 = values.preco_automovel1 ?? values.preco_automovel1;
-            const preco_automovel2 = values.preco_automovel2 ?? values.preco_automovel2;
+            const preco_automovel1 = values.preco_automovel1 ?? item.preco_automovel;
+            const preco_automovel2 = values.preco_automovel2 ?? item.preco_automovel;
             if (marca_automovel === item.marca_automovel &&
                 modelo_automovel === item.modelo_automovel &&
                 ano_automovel === item.ano_automovel &&
@@ -122,7 +122,7 @@ function VehicleList() {
             requisicao.preco_automovel2 = 400000
         } else if (price == '6') {
             requisicao.preco_automovel1 = 400000
-            requisicao.preco_automovel2 = 500000
+            requisicao.preco_automovel2 = 600000
         }
         setVehiclesFilter(find({
             marca_automovel: requisicao.marca_automovel,
@@ -200,7 +200,7 @@ function VehicleList() {
                     <option value='3'>R$50.000,00 até 100.000,00</option>
                     <option value='4'>R$100.000,00 até 200.000,00</option>
                     <option value='5'>R$200.000,00 até 300.000,00</option>
-                    <option value='6'>R$400.000,00 até 500.000,00</option>
+                    <option value='6'>R$400.000,00 até 600.000,00</option>
                 </select>
 
                 <span style={{ color: '#808080' }}>{alertFilter}</span>
