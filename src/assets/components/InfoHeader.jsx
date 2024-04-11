@@ -24,7 +24,7 @@ function InfoHeader() {
                 <span><b>Procure carros de verão</b></span>
             </div>
             <div className='batch'>
-                <h3>Carros ofertados</h3>
+                <h3>Carros ofertados pela categoria</h3>
                 <span>{countVehicles}</span>
             </div>
         </div>

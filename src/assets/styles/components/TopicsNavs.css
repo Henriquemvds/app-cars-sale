@@ -10,7 +10,7 @@
     opacity: 0.5;
 }
 
-.listTopics span:hover {
+.listTopics span:hover, .listTopics span:focus {
     border-right: solid;
     border-left: solid;
     border-width: 1px;
@@ -20,6 +20,8 @@
     padding: 0rem 1rem 0rem 1rem;
     cursor: pointer;
 }
+
+
 
 .iconCar {
     width: 15px;

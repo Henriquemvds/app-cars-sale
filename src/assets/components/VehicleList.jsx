@@ -16,7 +16,7 @@ function VehicleList() {
     const [brand, setBrand] = useState('0')
     const [model, setModel] = useState('0')
     const [pageSelect, setPageSelect] = useSearchParams()
-    const [alertFilter, setAlertFilter] = useState('Faça sua filtragem pelos preços!')
+    const [alertFilter, setAlertFilter] = useState('Faça sua filtragem!')
     const [filter, setFilter] = useState(false)
     const [disable, setDisable] = useState(false)
 
@@ -54,23 +54,22 @@ function VehicleList() {
     } else if (innerWidth <= 440) {
         limitList = 10
     }
-
+    
     for (let i = 0; countVehicles < vehicles.length; i++) {
         countVehicles = i
     }
     for (let i = 0; countVehiclesFilter < vehiclesFilter.length; i++) {
         countVehiclesFilter = i
     }
-
+    
     var maxValue = (new Date()).getFullYear() + 1;
     var minValue = 1980;
     for (let year = minValue; year <= maxValue; year++) {
         years.push(year)
     }
-
+    
     const find = (values) => {
         setFilter(true)
-        setAlertFilter('Se não obter resultados, tente adicionar mais filtros!')
         const resultado = vehicles.filter((item) => {
             const marca_automovel = values.marca_automovel ?? item.marca_automovel;
             const modelo_automovel = values.modelo_automovel ?? item.modelo_automovel;
@@ -91,7 +90,7 @@ function VehicleList() {
         requisicao.marca_automovel = brand
         requisicao.modelo_automovel = model
         requisicao.ano_automovel = year
-
+        
         if (brand == '0') {
             requisicao.marca_automovel = null
         }
@@ -131,17 +130,24 @@ function VehicleList() {
             preco_automovel1: requisicao.preco_automovel1,
             preco_automovel2: requisicao.preco_automovel2
         }))
-
     }
+    
     
     useEffect(() => {
         if (brand !== '0' || model !== '0' || year !== '0' || price !== '0') {
             getFilter()
         } else {
-            setFilter(false)
-            setAlertFilter('Faça sua filtragem pelos preços!')
+            setVehiclesFilter([])
+            setFilter(false)        
         }
-    }, [brand, model, year, price])
+        if (countVehiclesFilter != 0){
+            setAlertFilter(`${countVehiclesFilter} resultados encontrados!`)
+        } else {
+            setAlertFilter(`Faça sua filtragem!`)
+        }
+
+        console.log(countVehiclesFilter)
+    }, [brand, model, year, price, countVehiclesFilter])
 
     const paginate = (array, page_size, page_number) => {
         return array.slice((page_number - 1) * page_size, page_number * page_size);
