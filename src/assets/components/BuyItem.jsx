@@ -24,16 +24,16 @@ function BuyItem() {
 
     const getVehicle = () => {
         axios.get(`https://api-cars-sale-blue.vercel.app/automoveis/${id_automovel}`)
-          .then((response) => setVehicle(response.data))
-      }
+            .then((response) => setVehicle(response.data))
+    }
 
     const buyCar = () => {
         if (method == 0) {
             alert('Selecione a forma de pagamento')
         } else {
-
-            axios.delete(`https://api-cars-sale-blue.vercel.app/automoveis/excluir-automovel/${id_automovel}`)
-                .then(() => console.log('Comprado!'))
+           axios.delete(`https://api-cars-sale-blue.vercel.app/automoveis/excluir-automovel/${id_automovel}`)
+                .then(() => alert('Veículo comprado!'))
+              
         }
     }
 
@@ -48,7 +48,7 @@ function BuyItem() {
             setPrice48('')
         } else if (method == 1) {
             vehicle.map((item) => {
-                if (item.preco_automovel <= 30000){
+                if (item.preco_automovel <= 30000) {
                     paymentInitial = 5000
                 } else {
                     paymentInitial = 10000
@@ -107,12 +107,13 @@ function BuyItem() {
         }
     }, [method])
 
-  useEffect(() => {
-    getVehicle()
-  }, [])
+    useEffect(() => {
+        getVehicle()
+    }, [])
 
     return (
         <div>
+         
             <div className='detailsSelect'>
                 {vehicle.map((item) => (
                     <>
@@ -143,12 +144,13 @@ function BuyItem() {
                         </figure>
                     </>
                 ))}
-
                 <div className='buyConfirmed'>
                     <img src={iconCorrect} className='iconCorrect' />
                     <span><b>É sempre um prazer fazer negócios com você!</b></span>
                 </div>
             </div>
+
+
 
             <div className='detailsItem'>
                 <div className='alignInfo'>
